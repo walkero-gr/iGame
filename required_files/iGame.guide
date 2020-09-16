@@ -110,6 +110,9 @@ All the required software can be found on Aminet.
 
 If your Amiga has a 68000 CPU make sure that the libraries you have installed support it, i.e. there is a different MCC_TextEditor package for this processor. The same applies on CPUs that do not have FPU.
 
+The @{b}AmigaOS 4 version@{ub} should work fine on any AmigaOS 4.0 update 6 release and above. It might work on previous versions, but it is not tested.
+
+The @{b}MorphOS version@{ub} should work fine on any MorphOS 3.x release.
 @ENDNODE
 
 @NODE "INST" "Installation"
@@ -155,6 +158,98 @@ If the problem is not gone, add the NOGUIGFX tooltype to iGame. This option will
 @ENDNODE
 @NODE "USAG" "Using iGame"
 @{lindent 3}
+If you are new to iGame and you would like a "fast first steps" guide then we recommend you to follow the next bullets:
+
+- Select from the menu the "Settings > Game Repositories"
+- Add to the list the folders were you keep your WHDLoad games
+- Click the "Close" button
+- Select from the menu the "Actions > Scan Repositories"
+- As soon as the list appears double click on the game you want to play for this to start.
+
+That's all. This is so simple.
+
+But if you want to have more details for all the available Menus and Windows, visit the following sections.
+
+@{" Menus                    " LINK "MENUS" 0}
+@{" Main Window              " LINK "WINMAIN" 0}
+@{" Add a Game Window        " LINK "WINADDG" 0}
+@{" Settings Window          " LINK "WINSETS" 0}
+@{" Game Repositories Window " LINK "WINREPO" 0}
+@{" Properties Window        " LINK "WINPROP" 0}
+@{" Icon Tooltypes           " LINK "ICNTLTP" 0}
+
+@ENDNODE
+@NODE "MENUS" "Menus"
+@{lindent 3}
+@{b}Actions@{ub}
+@{lindent 6}
+@{u}Scan Repositories@{uu}
+When you select "Scan Repositories", iGame will scan the paths you added at the @{" Game Repositories " LINK "WINREPO" 0} window and will try to find your available WHDLoad games or demos. This method supports ONLY WHDLoad games and demos. iGame checks the .slave files, and based on them creates a list of games and demos, which are later shown in the @{" Main Window " LINK "WINMAIN" 0}.
+
+@{u}Add Game...@{uu}
+This menu opens the @{" Add a Game " LINK "WINADDG" 0} window, which helps you add games/demos or any other executable you want into iGame list. You can also categorize it.
+
+@{u}Show/Hide hidden entries@{uu}
+The menu shows or hides from the list in the Main Window the entries which are set as hidden.
+
+@{u}About...@{uu}
+This menu item show information about the application, the version and date of release and the target CPU. Also, you will find contact information of the developer and contributors.
+
+@{u}Quit@{uu}
+This menu item closes iGame.
+
+@{lindent 3}
+@{b}Game@{ub}
+@{lindent 6}
+@{u}Properties...@{uu}
+This menu opens the @{" Properties " LINK "WINPROP" 0} window, where you can set more information for the selected entry, like the category, set it as favorite etc.. If no entry is selected an error message is shown.
+
+@{u}Open Game Dir@{uu}
+When you select "Open Game Dir", iGame will open a window on Workbench from the selected entry. This is useful when you need to check a manual or a guide that comes along with the game or demo.
+
+@{lindent 3}
+@{lindent 6}
+@{u}Settings...@{uu}
+This menu opens the @{" Settings " LINK "WINSETS" 0} window, where you can make some configuration on how iGame will work, like the size of the screenshot etc..
+
+@{u}Game Repositories...@{uu}
+This menu opens the @{" Game Repositories " LINK "WINREPO" 0} window, where you can add/remove paths from your hard disk, where you have stored your games or demos. These paths are useful for iGame only if they contain WHDLoad games/demos, and they are used to automatically recognize and build a list of them. If you do any changes you have to rescan the Game Repositories using the menu "Actions > Scan Repositories".
+
+@{u}MUI Setting...@{uu}
+This menu opens the MUI Settings window, where you can change the look of MUI components for iGame.
+
+@ENDNODE
+@NODE "WINMAIN" "Main Window"
+@{lindent 3}
+The Main Window is what you see when you start iGame. It is pretty simple to use and it has only a few fields.
+
+At the top there is the "Filter" field which is used to filter the list of entries, based on what you write there. iGame returns entries that have as a part in their name the inserted text. For example if you want to find all the games that have "Soccer" in their name, that what you need to write. The search is not case sensitive, so it doesn't matter if the part of the name is capitalized or not. From the iGame settings you can set when the search is initialized, while you type or when you press "Enter".
+
+At the left side there is the list, where all the entries (games, demos etc.) are shown. With double click on an entry it is executed. If you want to add some information on an entry using the "Game > Properties..." menu, that's where you have to select it.
+
+At the top right side there is a screenshot of the selected entry. For the screenshot iGame uses a file which must be in the game/demo folder named @{b}igame.iff@{ub}. If no screenshot is available then a generic image is shown. You can disable the screenshots from the @{" Settings Window " LINK "WINSETS" 0} or the @{" Icon Tooltypes " LINK "ICNTLTP" 0}.
+
+Under the screenshot there is the "Genres" list which help you filter the games based on the Genre, as well as by "Last played", "Favorites", "Most Played" and "Never Played". There is also an "Unknown" selection which shows the entries that do not have any Genre assigned.
+
+At the bottom there is a read only field which shows information about iGame, based on what you are doing. It is like a status bar, where useful information will be shown while you use iGame.
+
+@ENDNODE
+@NODE "WINADDG" "Add a Game Window"
+@{lindent 3}
+This window opens from the menu "Actions > Add a Game". This is useful in cases you want to add and WDHLoad game/demo or a game/demo which can be started from Workbench. Depending of the AmigaOS version it uses compatible methods to run the executable.
+
+In this window you can set the "Title" of the game/demo, select the path on HD of the executable and set it's "Genre".
+
+Click on OK if you are fine with your selections, so that this new entry will be saved on the list. Click on "Cancel" if you changed your mind.
+
+@ENDNODE
+@NODE "WINREPO" "Game Repositories Window "
+@{lindent 3}
+
+
+there are a few first steps that you might like to follow. Read about the available Menu items
+
+
 The first thing to do, when you start iGame for the first time, is to add
 one or more "repositories", i.e. paths on your system drives that you have
 games installed.
