@@ -1,3 +1,13 @@
+## iGame 2.0b7 [future]
+### Added
+- Changelog file
+
+### Changed
+- Fully updated iGame.guide file
+
+### Fixed
+- Fixed a problem with saving of the CSV file when the old gameslist file had empty genres
+
 ## iGame 2.0b6 (4 Sep 2020)
 ### Added
 - Now iGame checks for any missing library and informs the user if it is started from the shell
