@@ -1,75 +1,157 @@
+## iGame 2.0b6 (4 Sep 2020)
+### Added
+- Now iGame checks for any missing library and informs the user if it is started from the shell
+- New installation script
+- Show "Unknown" genre in genres list for those games that are not categorized yet
+- When iGame is iconified, now uses it's icon
+- Open game directory from menu
+- AmigaOS 4 native version added
+
+### Changed
+- Changed the gameslist file to CSV, which makes iGame to start faster and the file to be a lot smaller in size. If there is already a gameslist, iGame will read it and on next write it will convert it to csv. All genres and statistics will remain. The old plain list gamelist will not be used after this point, but it is not going to be deleted automatically
+- Keep image aspect for screenshot/icon when GuiGfx is used
+
+### Fixed
+- Stability/Bug fixes, GUI fixes
+- Fixed menu shortcuts that didn't work
 
 
-Here's a list of changes:
+## iGame 2.0b5 (3 May 2019)
+### Added
+- Option to start with the favorites list
+- If C:WBRun exists, run non-whdload games with it
 
-  Work in progress builds (iGame-2015-11-07.lha):
+### Changed
+- Some misc gui changes
 
-        Fix a GR when selecting Game Properties without having selected a game. (Thanks @AllanU74)
 
-  Work in progress builds (iGame-2015-02-13.lha):
+## iGame 2.0b4 (iGame-2019-01-15.lha)
+TBD
 
-        Adjusts screenshot box according to workbench resolution.
 
-  Work in progress builds (iGame-2014-08-13.lha):
+## iGame 2.0b3 (iGame-2018-11-01.lha)
+### Added
+- Added Makefile for Linux
 
-        Now compiled with vbcc. Should produce a slightly faster build.
-        Builds for 030 and 060.
-        Fixed OS4 crashes (mainly during search).
-        Added SAVESTATSONEXIT tooltype.
-        Faster initial loading.
-        Under some circumstances, iGame now loads games icons.
-        Some other small changes done during a few years of on/off coding.
 
-  1.5 (12/08/08):
+## iGame 2.0b2 (iGame-2018-10-25.lha)
+TBD
 
-	Genres are now in an external file.
-	Added "--Never Played--".
-	Reworked "Show/Hide hidden slaves".
-	Filter will now work together with genres.
-	Added FILTERUSEENTER.
-	Added indication when writing to disk.
 
-  1.4 (08/12/07):
+## iGame 2.0b1 (iGame-2018-10-11.lha)
+### Added
+- Added Makefile for Windows
+- Added title scanning based on the parent folder
+- Added Settings window. Now using a prefs file, instead of only Tooltypes. Falls back to tooltypes if no prefs file is found.
+- Fully translatable using standard .catalog files (.cd file included for translators)
 
-	Editable tooltypes.
-	Speed increase while listing games.
-	Misc bug fixes.
+### Changed
+- GUI rewritten from scratch keeping the same look and feel
+- A lot of code cleanup
+- Improved error handling in various places
 
-  1.3 (28/04/07):
 
-	Added the NOGUIGFX tooltype.
-	Added keyboard shortcut to Game Properties (Right A + P).
-	Added option to hide a slave.
-	iGame will now launch a slave, even without an info file (with default tooltypes).
-	Reads titles from slave files.
-	Added the update_titles app.
-	'Alt' suffix is used for multiple slaves.
+## iGame (iGame-2016-11-30.lha)
+TBD
 
-  1.2 (06/04/2007):
 
-	Fixed screenshot size to be consistent when changing images.
-	Search .info files only when launching games.
-	Counters now work for genres filtering.
+## iGame (iGame-2015-11-07.lha)
+### Fixed
+- Fix a GR when selecting Game Properties without having selected a game. (Thanks @AllanU74)
 
-  1.1 (27/03/2007):
 
-	Fixed a nasty bug that caused iGame to sometimes list wrong titles
-    (or no titles at all) after a scan.
-	Added MUI Settings.
+## iGame (iGame-2015-02-13.lha)
+### Changed
+- Adjusts screenshot box according to workbench resolution.
 
-  1.0 (17/03/2007):
 
-	Too many things changed to list here.
-	Released ;-)
+## iGame (iGame-2014-08-13.lha)
+### Added
+- Builds for 030 and 060
+- Added SAVESTATSONEXIT tooltype
+- Under some circumstances, iGame now loads games icons
 
-  0.2 (30/07/2005):
+### Changed
+- Now compiled with vbcc. Should produce a slightly faster build.
+- Faster initial loading
 
-	iGame finds the tooltypes from the game's icon and uses them.
+### Fixed
+- Fixed OS4 crashes (mainly during search).
+- Some other small changes done during a few years of on/off coding.
 
-  0.1-23052005 (23/05/2005):
 
-	Games that have their data stored in a sub-dir, now run.
+## iGame 1.5 (12/08/08)
+### Added
+- Added "--Never Played--"
+- Filter will now work together with genres
+- Added FILTERUSEENTER
+- Added indication when writing to disk
 
-  0.1-05052005 (05/05/2005):
+### Changed
+- Genres are now in an external file
+- Reworked "Show/Hide hidden slaves"
 
-	First test version.
+
+## iGame 1.4 (08/12/07)
+### Added
+- Editable tooltypes
+
+### Changed
+- Speed increase while listing games
+
+### Fixed
+- Misc bug fixes
+
+
+## iGame 1.3 (28/04/07)
+### Added
+- Added the NOGUIGFX tooltype
+- Added keyboard shortcut to Game Properties (Right A + P)
+- Added option to hide a slave
+- iGame will now launch a slave, even without an info file (with default tooltypes)
+- Reads titles from slave files
+- Added the update_titles app
+- 'Alt' suffix is used for multiple slaves
+
+
+## iGame 1.2 (06/04/2007)
+### Changed
+- Search .info files only when launching games
+
+### Fixed
+- Fixed screenshot size to be consistent when changing images
+- Counters now work for genres filtering
+
+
+## iGame 1.1 (27/03/2007)
+### Added
+- Added MUI Settings
+
+### Fixed
+- Fixed a nasty bug that caused iGame to sometimes list wrong titles (or no titles at all) after a scan
+
+
+## iGame 1.0 (17/03/2007)
+### Added
+- First public release
+
+### Changed
+- Too many things changed to list here
+
+
+## iGame 0.2 (30/07/2005)
+### Added
+- iGame finds the tooltypes from the game's icon and uses them
+
+
+## iGame 0.1-23052005 (23/05/2005)
+### Added
+- Games that have their data stored in a sub-dir, now run
+
+
+## iGame 0.1-05052005 (05/05/2005)
+### Added
+- First test version
+
+
+The format of this changelog file is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
