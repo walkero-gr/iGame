@@ -1,120 +1,100 @@
 ---
 kind: pipeline
 type: docker
-name: test-build-iGame
+name: compile-m68k-000
 
 steps:
-- name: compile-m68k-000
+- name: build
   pull: always
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
     - make -f Makefile.docker
-- name: compile-m68k-030
+
+---
+kind: pipeline
+type: docker
+name: compile-m68k-030
+
+steps:
+- name: build
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
     - make -f Makefile.docker iGame.030
-- name: compile-m68k-040
+
+---
+kind: pipeline
+type: docker
+name: compile-m68k-040
+
+steps:
+- name: build
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
     - make -f Makefile.docker iGame.040
-- name: compile-m68k-060
+
+---
+kind: pipeline
+type: docker
+name: compile-m68k-060
+
+steps:
+- name: build
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
     - make -f Makefile.docker iGame.060
-- name: compile-os4
+
+---
+kind: pipeline
+type: docker
+name: compile-os4
+
+steps:
+- name: build
   pull: always
   image: walkero/docker4amigavbcc:latest-ppc
   commands:
     - cd /drone/src
     - make -f Makefile.docker iGame.OS4
-- name: compile-mos
+
+---
+kind: pipeline
+type: docker
+name: compile-mos
+
+steps:
+- name: build
   pull: always
   image: walkero/docker4amigavbcc:latest-mos
   commands:
     - cd /drone/src
     - make -f Makefile.docker iGame.MOS
-- name: create-release-files
-  pull: always
+
+---
+kind: pipeline
+type: docker
+name: create-release-files
+
+steps:
+- name: notify
+  image: plugins/slack
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
     - make -f Makefile.docker release
 
+depends_on:
+- compile-m68k-000
+- compile-m68k-030
+- compile-m68k-040
+- compile-m68k-060
+- compile-os4
+- compile-mos
+
 trigger:
-  when:
-    branch:
-      - develop
   event:
     include:
-      - push
-      - pull_request
-
----
-  kind: pipeline
-  type: docker
-  name: release-iGame
-
-  steps:
-  - name: compile-m68k-000
-    pull: always
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker
-  - name: compile-m68k-030
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker iGame.030
-  - name: compile-m68k-040
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker iGame.040
-  - name: compile-m68k-060
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker iGame.060
-  - name: compile-os4
-    pull: always
-    image: walkero/docker4amigavbcc:latest-ppc
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker iGame.OS4
-  - name: compile-mos
-    pull: always
-    image: walkero/docker4amigavbcc:latest-mos
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker iGame.MOS
-  - name: create-release-files
-    pull: always
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker release
-  - name: deploy-all-binary
-    pull: always
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: GITHUB_RELEASE_API_KEY
-      files:
-        - "iGame-*.lha"
-      title: "iGame release ${DRONE_TAG}"
-  - name: clean-release-files
-    pull: always
-    image: walkero/docker4amigavbcc:latest-m68k
-    commands:
-      - cd /drone/src
-      - make -f Makefile.docker clean-release
-
-  trigger:
-    event:
-      include:
-        - tag
+    - push
