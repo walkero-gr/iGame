@@ -79,11 +79,12 @@ type: docker
 name: create-release-files
 
 steps:
-- name: notify
+- name: create-release-lha
   image: plugins/slack
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - cd /drone/src
+    - ls -la
     - make -f Makefile.docker release
 
 depends_on:
