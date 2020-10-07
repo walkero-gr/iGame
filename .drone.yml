@@ -1,50 +1,16 @@
 ---
 kind: pipeline
 type: docker
-name: compile-m68k-000
+name: compile-m68k
 
 steps:
 - name: build
   pull: always
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
-    - cd /drone/src
     - make -f Makefile.docker
-
----
-kind: pipeline
-type: docker
-name: compile-m68k-030
-
-steps:
-- name: build
-  image: walkero/docker4amigavbcc:latest-m68k
-  commands:
-    - cd /drone/src
     - make -f Makefile.docker iGame.030
-
----
-kind: pipeline
-type: docker
-name: compile-m68k-040
-
-steps:
-- name: build
-  image: walkero/docker4amigavbcc:latest-m68k
-  commands:
-    - cd /drone/src
     - make -f Makefile.docker iGame.040
-
----
-kind: pipeline
-type: docker
-name: compile-m68k-060
-
-steps:
-- name: build
-  image: walkero/docker4amigavbcc:latest-m68k
-  commands:
-    - cd /drone/src
     - make -f Makefile.docker iGame.060
 
 ---
@@ -57,7 +23,6 @@ steps:
   pull: always
   image: walkero/docker4amigavbcc:latest-ppc
   commands:
-    - cd /drone/src
     - make -f Makefile.docker iGame.OS4
 
 ---
@@ -70,7 +35,6 @@ steps:
   pull: always
   image: walkero/docker4amigavbcc:latest-mos
   commands:
-    - cd /drone/src
     - make -f Makefile.docker iGame.MOS
 
 ---
@@ -78,20 +42,19 @@ kind: pipeline
 type: docker
 name: create-release-files
 
+workspace:
+  path: /drone/src
+
 steps:
 - name: create-release-lha
   image: plugins/slack
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
-    - cd /drone/src
     - ls -la
     - make -f Makefile.docker release
 
 depends_on:
-- compile-m68k-000
-- compile-m68k-030
-- compile-m68k-040
-- compile-m68k-060
+- compile-m68k
 - compile-os4
 - compile-mos
 
