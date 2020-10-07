@@ -1,10 +1,13 @@
 ---
 kind: pipeline
 type: docker
-name: compile-m68k
+name: compile
+
+workspace:
+  path: /drone/src
 
 steps:
-- name: build
+- name: compile-m68k
   pull: always
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
@@ -12,51 +15,26 @@ steps:
     - make -f Makefile.docker iGame.030
     - make -f Makefile.docker iGame.040
     - make -f Makefile.docker iGame.060
-
----
-kind: pipeline
-type: docker
-name: compile-os4
-
-steps:
-- name: build
+- name: compile-os4
   pull: always
   image: walkero/docker4amigavbcc:latest-ppc
   commands:
     - make -f Makefile.docker iGame.OS4
-
----
-kind: pipeline
-type: docker
-name: compile-mos
-
-steps:
-- name: build
+- name: compile-mos
   pull: always
   image: walkero/docker4amigavbcc:latest-mos
   commands:
     - make -f Makefile.docker iGame.MOS
-
----
-kind: pipeline
-type: docker
-name: create-release-files
-
-workspace:
-  path: /drone/src
-
-steps:
 - name: create-release-lha
   image: plugins/slack
   image: walkero/docker4amigavbcc:latest-m68k
   commands:
     - ls -la
     - make -f Makefile.docker release
-
-depends_on:
-- compile-m68k
-- compile-os4
-- compile-mos
+  depends_on:
+    - compile-m68k
+    - compile-os4
+    - compile-mos
 
 trigger:
   event:
