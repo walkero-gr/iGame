@@ -35,8 +35,8 @@ steps:
     - compile-mos
 
 trigger:
-  when:
-    branch:
+  branch:
+    include:
     - master
     - develop
   event:
@@ -47,7 +47,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: compile
+name: compile-release-bytag
 
 workspace:
   path: /drone/src
