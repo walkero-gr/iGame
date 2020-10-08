@@ -86,6 +86,8 @@ steps:
     files:
       - "iGame-*.lha"
     title: "iGame release ${DRONE_TAG}"
+  depends_on:
+    - create-release-lha
 
 trigger:
   event:
