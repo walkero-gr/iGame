@@ -43,7 +43,6 @@ trigger:
     include:
     - push
     - pull_request
-
 ---
 kind: pipeline
 type: docker
