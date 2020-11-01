@@ -1,10 +1,14 @@
-## iGame 2.0b8 - future
+## iGame 2.0 - 2020-10-16
+This release includes all the fixes and changes of the 2.0 beta releases below.
+
+## iGame 2.0b8 - 2020-10-08
 ### Added
 - Added Italian catalog file in release package and it is now selectable in install script
 
 ### Fixed
 - Fixed the copy of the OS4 native version on installer
 - Fixed the running of games that include spaces in path or file names and added by "Add a game" menu item
+- Fixed the zero records in gameslist file when the user changed game properties from the respective window
 
 ## iGame 2.0b7 - 2020-09-25
 ### Added
