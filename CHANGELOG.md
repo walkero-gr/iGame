@@ -5,7 +5,6 @@
 ### Updated
 - Updated Italian catalog
 - Updated Greek catalog
-
 ### Fixed
 - Fixed starting whdload games that have tooltypes start with the characters »«.=#!
 - Fixed starting whdload games/demos that the Slave path is missing. Now an error message is shown, and iGame doesn't crash hard, bringing down the whole system.
