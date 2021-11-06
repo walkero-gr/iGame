@@ -67,7 +67,7 @@
 #include "iGameExtern.h"
 #include "iGame_cat.h"
 
-extern char* strdup(const char* s);
+extern char* strdup(const char* s);  // TODO: Possible obsolete. Maybe needed on some old tools. Better move it there
 extern char* strcasestr(const char *haystack, const char *needle);
 extern void string_to_lower(char* slave);
 extern char** my_split(char* str, char* spl);
