@@ -61,6 +61,10 @@
 
 extern struct ObjApp* app;
 extern char* executable_name;
+<<<<<<< HEAD
+=======
+extern const int MAX_PATH_SIZE;
+>>>>>>> master
 
 /* structures */
 struct FileRequester* request;
@@ -70,7 +74,11 @@ extern char fname[255];
 extern games_list *item_games, *games;
 extern igame_settings *current_settings;
 
+<<<<<<< HEAD
 
+=======
+// TODO: This is obsolete. Change it with getParentPath()
+>>>>>>> master
 void strip_path(const char *path, char *naked_path)
 {
 	int i, k;
@@ -86,6 +94,29 @@ void strip_path(const char *path, char *naked_path)
 	naked_path[k] = '\0';
 }
 
+<<<<<<< HEAD
+=======
+STRPTR getParentPath(STRPTR filename)
+{
+	STRPTR path = AllocVec(sizeof(char) * MAX_PATH_SIZE, MEMF_CLEAR);
+	if (path)
+	{
+		BPTR fileLock = Lock(filename, ACCESS_READ);
+		if (fileLock)
+		{
+			BPTR folderLock = ParentDir(fileLock);
+			NameFromLock(folderLock, path, sizeof(char) * MAX_PATH_SIZE);
+
+			UnLock(folderLock);
+			UnLock(fileLock);
+			return path;
+		}
+	}
+
+	return NULL;
+}
+
+>>>>>>> master
 char* get_slave_from_path(char *slave, int start, char *path)
 {
 	int z = 0;
@@ -102,6 +133,7 @@ char* get_slave_from_path(char *slave, int start, char *path)
  * - Return True if exists
  * - Return False if it doesn't exist
  */
+<<<<<<< HEAD
 int check_path_exists(char *path)
 {
 	const BPTR lock = Lock(path, ACCESS_READ);
@@ -111,6 +143,17 @@ int check_path_exists(char *path)
 
 	UnLock(lock);
 	return TRUE;
+=======
+BOOL check_path_exists(char *path)
+{
+	const BPTR lock = Lock(path, ACCESS_READ);
+	if (lock) {
+		UnLock(lock);
+		return TRUE;
+	}
+
+	return FALSE;
+>>>>>>> master
 }
 
 BOOL get_filename(const char *title, const char *positive_text, const BOOL save_mode)
@@ -204,6 +247,10 @@ void read_tool_types(void)
 	int screen_width, screen_height;
 	unsigned char filename[32];
 
+<<<<<<< HEAD
+=======
+	// TODO: The opening and the close of the library needs to be done at application start and end
+>>>>>>> master
 	if ((icon_base = (struct Library *)OpenLibrary((CONST_STRPTR)ICON_LIBRARY, 0)))
 	{
 		strcpy(filename, PROGDIR);
@@ -367,6 +414,10 @@ int get_title_from_slave(char* slave, char* title)
 	return 0;
 }
 
+<<<<<<< HEAD
+=======
+// TODO: This seems OBSOLETE and can be replaced by getParentPath(). Needs investigation
+>>>>>>> master
 // Get the Directory part from a full path containing a file
 const char* get_directory_name(const char* str)
 {
@@ -394,6 +445,10 @@ const char* get_directory_name(const char* str)
 	return dir_name;
 }
 
+<<<<<<< HEAD
+=======
+// TODO: This seems OBSOLETE and can be replaced by getParentPath(). Needs investigation
+>>>>>>> master
 // Get the complete directory path from a full path containing a file
 const char *get_directory_path(const char *str)
 {
@@ -431,6 +486,7 @@ const char *get_executable_name(int argc, char **argv)
 	return executable_name;
 }
 
+// TODO: This can use the getParentPath()
 void open_current_dir(void)
 {
 	// Allocate Memory for variables
