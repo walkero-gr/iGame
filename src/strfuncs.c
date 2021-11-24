@@ -20,11 +20,8 @@
   along with iGame. If not, see <http://www.gnu.org/licenses/>.
 */
 
-<<<<<<< HEAD
-=======
 #include <proto/wb.h>
 
->>>>>>> master
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>

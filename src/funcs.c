@@ -26,6 +26,7 @@
 #include <mui/TextEditor_mcc.h>
 
 /* Prototypes */
+#include <clib/alib_protos.h>
 #include <proto/wb.h>
 
 #if defined(__amigaos4__)
