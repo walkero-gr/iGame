@@ -26,6 +26,7 @@
 #include <mui/TextEditor_mcc.h>
 
 /* Prototypes */
+#include <clib/alib_protos.h>
 #include <proto/wb.h>
 
 #if defined(__amigaos4__)
@@ -1113,29 +1114,36 @@ void refresh_sidepanel()
 
 static void show_screenshot(STRPTR screenshot_path)
 {
-	if (current_settings->no_guigfx)
-	{
-		app->IM_GameImage_1 = MUI_NewObject(Dtpic_Classname,
-					MUIA_Dtpic_Name,		screenshot_path,
-					MUIA_Frame, 				MUIV_Frame_ImageButton,
-		End;
-	}
-	else
-	{
-		app->IM_GameImage_1 = GuigfxObject,
-					MUIA_Guigfx_FileName,				screenshot_path,
-					MUIA_Guigfx_Quality,				MUIV_Guigfx_Quality_Best,
-					MUIA_Guigfx_ScaleMode,			NISMF_SCALEFREE | NISMF_KEEPASPECT_PICTURE,
-					MUIA_Guigfx_Transparency,		0,
-					MUIA_Frame, 								MUIV_Frame_ImageButton,
-					MUIA_FixHeight, 						current_settings->screenshot_height,
-					MUIA_FixWidth, 							current_settings->screenshot_width,
-		End;
-	}
+	static char prvScreenshot[255];
 
-	if (app->IM_GameImage_1)
+	if (strcmp(screenshot_path, prvScreenshot))
 	{
-		refresh_sidepanel();
+		if (current_settings->no_guigfx)
+		{
+			app->IM_GameImage_1 = MUI_NewObject(Dtpic_Classname,
+						MUIA_Dtpic_Name,		screenshot_path,
+						MUIA_Frame, 				MUIV_Frame_ImageButton,
+			End;
+		}
+		else
+		{
+			app->IM_GameImage_1 = GuigfxObject,
+						MUIA_Guigfx_FileName,				screenshot_path,
+						MUIA_Guigfx_Quality,				MUIV_Guigfx_Quality_Best,
+						MUIA_Guigfx_ScaleMode,			NISMF_SCALEFREE | NISMF_KEEPASPECT_PICTURE,
+						MUIA_Guigfx_Transparency,		0,
+						MUIA_Frame, 								MUIV_Frame_ImageButton,
+						MUIA_FixHeight, 						current_settings->screenshot_height,
+						MUIA_FixWidth, 							current_settings->screenshot_width,
+			End;
+		}
+
+		if (app->IM_GameImage_1)
+		{
+			refresh_sidepanel();
+		}
+
+		strcpy(prvScreenshot, screenshot_path);
 	}
 }
 
@@ -1170,17 +1178,15 @@ static char *get_screenshot_path(char *game_title)
 	// Return the igame.iff from the game folder, if exists
 	snprintf(screenshot_path, sizeof(char) * MAX_PATH_SIZE, "%s/igame.iff", slavePath);
 	FreeVec(slavePath);
-
-	if(check_path_exists(screenshot_path))
+	if(check_path_exists(screenshot_path) && checkImageDatatype(screenshot_path))
 	{
 		FreeVec(path);
 		return screenshot_path;
 	}
 
 	// Return the slave icon from the game folder, if exists
-	// TODO: Check if .info datatype exists before use this one, otherwise ignore
 	snprintf(screenshot_path, sizeof(char) * MAX_PATH_SIZE, "%s.info", substring(path, 0, -6));
-	if(check_path_exists(screenshot_path))
+	if(check_path_exists(screenshot_path) && checkImageDatatype(screenshot_path))
 	{
 		FreeVec(path);
 		return screenshot_path;

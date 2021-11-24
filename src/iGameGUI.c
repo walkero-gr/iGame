@@ -32,6 +32,7 @@
 #include <proto/exec.h>
 #include <proto/icon.h>
 #include <proto/asl.h>
+#include <proto/datatypes.h>
 #include <proto/muimaster.h>
 
 /* System */
@@ -1599,4 +1600,19 @@ void DisposeApp(struct ObjApp * object)
 		MUI_DisposeObject(object->App);
 		FreeVec(object);
 	}
+}
+
+BOOL checkImageDatatype(STRPTR filename)
+{
+	Object *dtObj = NewDTObject(filename,
+			DTA_GroupID,	GID_PICTURE,
+			TAG_DONE);
+
+	if (dtObj)
+	{
+		DisposeDTObject (dtObj);
+		return TRUE;
+	}
+
+	return FALSE;
 }
