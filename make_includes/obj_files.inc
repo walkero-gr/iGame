@@ -7,4 +7,5 @@ OBJS_030	= src/funcs_030.o src/iGameGUI_030.o src/iGameMain_030.o src/strfuncs_0
 OBJS_040	= src/funcs_040.o src/iGameGUI_040.o src/iGameMain_040.o src/strfuncs_040.o src/fsfuncs_040.o
 OBJS_060	= src/funcs_060.o src/iGameGUI_060.o src/iGameMain_060.o src/strfuncs_060.o src/fsfuncs_060.o
 OBJS_MOS	= src/funcs_MOS.o src/iGameGUI_MOS.o src/iGameMain_MOS.o src/strfuncs_MOS.o src/fsfuncs_MOS.o
-OBJS_OS4	= src/funcs_OS4.o src/iGameGUI_OS4.o src/iGameMain_OS4.o src/strfuncs_OS4.o src/fsfuncs_OS4.o
+OBJS_OS4	= src/funcs_OS4.o src/iGameGUI_OS4.o src/iGameMain_OS4.o src/strfuncs_OS4.o src/fsfuncs_OS4.o src/sqldb_OS4.o
+

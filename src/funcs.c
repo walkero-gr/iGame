@@ -55,6 +55,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <time.h>
 
 #define iGame_NUMBERS
 #include "iGame_strings.h"
@@ -694,7 +695,32 @@ void app_start(void)
 
 	const BPTR gamesListLock = Lock(csvFilename, ACCESS_READ);
 	if (gamesListLock) {
+		
+		
+		clock_t t;
+		t = clock();
 		load_games_csv_list(csvFilename);
+		t = clock() - t;
+		double time_taken = ((double)t)/CLOCKS_PER_SEC;
+		printf("DBG: load_games() from csv time taken: %f\n", time_taken);
+		
+		// Check load from db
+		t = clock();
+		load_games_db_list(csvFilename);
+		t = clock() - t;
+		time_taken = ((double)t)/CLOCKS_PER_SEC;
+		printf("DBG: load_games() from sqlite3 db time taken: %f\n", time_taken);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// load_games_csv_list(csvFilename);
 	} else {
 		load_games_list(DEFAULT_GAMESLIST_FILE);
 	}
@@ -1651,8 +1677,8 @@ void list_show_hidden(void)
 
 void app_stop(void)
 {
-	if (current_settings->save_stats_on_exit)
-		save_list(0);
+	// if (current_settings->save_stats_on_exit)
+	// 	save_list(0);
 
 	memset(&fname[0], 0, sizeof fname);
 
@@ -1859,7 +1885,19 @@ static void refresh_list(const int check_exists)
 
 void save_list(const int check_exists)
 {
+	clock_t t;
+	t = clock();
 	save_to_csv(DEFAULT_GAMESLIST_FILE, check_exists);
+	t = clock() - t;
+	double time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf("DBG: save_list() to csv time taken: %f\n", time_taken);
+	
+	// Check save to db
+	t = clock();
+	save_to_db(DEFAULT_GAMESLIST_FILE, check_exists);
+	t = clock() - t;
+	time_taken = ((double)t)/CLOCKS_PER_SEC;
+	printf("DBG: save_list() to sqlite3 db time taken: %f\n", time_taken);
 }
 
 void save_list_as(void)
@@ -2411,3 +2449,4 @@ void joystick_input(ULONG val)
 		joystick_buttons(val);
 	}
 }
+

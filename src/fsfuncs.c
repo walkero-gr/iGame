@@ -47,6 +47,8 @@
 #endif
 #include <libraries/asl.h>
 
+#include <sqlite3.h>
+
 /* ANSI C */
 #include <stdio.h>
 #include <string.h>
@@ -59,6 +61,7 @@
 #include "iGameExtern.h"
 #include "strfuncs.h"
 #include "funcs.h"
+#include "sqldb.h"
 #include "fsfuncs.h"
 
 extern struct ObjApp* app;
@@ -234,6 +237,53 @@ void load_games_csv_list(const char *filename)
 		free(buf);
 }
 
+
+int getItems(void *unused, int cntCols, char **fields, char **colNames)
+{
+
+	item_games = (games_list *)calloc(1, sizeof(games_list));
+	item_games->next = NULL;
+				
+	// item_games->index = 0;
+	item_games->exists = 0;
+	item_games->deleted = 0;
+	item_games->hidden = 0;
+
+	item_games->index = atoi(fields[0]);
+	strcpy(item_games->title, fields[1]);
+	strcpy(item_games->genre, fields[2]);
+	strcpy(item_games->path, fields[3]);
+	item_games->favorite = atoi(fields[4]);
+	item_games->times_played = atoi(fields[5]);
+	item_games->last_played = atoi(fields[6]);
+	item_games->hidden = atoi(fields[7]);
+
+	if (games)
+	{
+		item_games->next = games;
+		games = item_games;
+	}
+	else
+	{
+		games = item_games;
+	}
+	
+  return 0;
+}
+
+void load_games_db_list(const char *filename)
+{
+	if (games != NULL)
+	{
+		free(games);
+		games = NULL;
+	}
+
+	sqlGetItems(getItems);
+	
+	// add_games_to_listview();
+}
+
 void save_to_csv(const char *filename, const int check_exists)
 {
 	char csvFilename[32];
@@ -287,6 +337,48 @@ void save_to_csv(const char *filename, const int check_exists)
 	fclose(fpgames);
 
 	status_show_total();
+}
+
+void save_to_db(const char *filename, const int check_exists)
+{
+	sqlite3 *db = sqlDBOpen();
+	
+	const char* saving_message = (const char*)GetMBString(MSG_SavingGamelist);
+	set(app->TX_Status, MUIA_Text_Contents, saving_message);
+
+	for (item_games = games; item_games != NULL; item_games = item_games->next)
+	{
+		if (check_exists == 1)
+		{
+			if (item_games->exists == 1)
+			{
+				if (strlen(item_games->genre) == 0)
+					strcpy(item_games->genre, "Unknown");
+				sqlAddItem(
+					item_games->index, item_games->title, item_games->genre, item_games->path,
+					item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
+					db
+				);
+			}
+			else
+			{
+				strcpy(item_games->path, "");
+			}
+		}
+		else
+		{
+			if (strlen(item_games->genre) == 0)
+				strcpy(item_games->genre, "Unknown");
+				sqlAddItem(
+					item_games->index, item_games->title, item_games->genre, item_games->path,
+					item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
+					db
+				);
+		}
+	}
+
+	sqlite3_close(db);
+	status_show_total();	
 }
 
 void read_tool_types(void)
@@ -580,3 +672,4 @@ void get_path(char *title, char *path)
 		}
 	}
 }
+
