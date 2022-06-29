@@ -271,7 +271,7 @@ int getItems(void *unused, int cntCols, char **fields, char **colNames)
   return 0;
 }
 
-void load_games_db_list(const char *filename)
+void load_games_db_list(void)
 {
 	if (games != NULL)
 	{
@@ -582,7 +582,7 @@ const char* get_directory_name(const char* str)
 
 // TODO: This seems OBSOLETE and can be replaced by getParentPath(). Needs investigation
 // Get the complete directory path from a full path containing a file
-const char *get_directory_path(const char *str)
+char *get_directory_path(const char *str)
 {
 	int pos1 = get_delimiter_position(str);
 	if (!pos1)
@@ -623,7 +623,7 @@ void open_current_dir(void)
 {
 	// Allocate Memory for variables
 	char *game_title = NULL;
-	const char *path_only = NULL;
+	char *path_only = NULL;
 
 	if (get_wb_version() < 44)
 	{

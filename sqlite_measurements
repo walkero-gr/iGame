@@ -13,16 +13,26 @@ DBG: load_games() from sqlite3 db time taken: 0.084204
 
 ---
 
-AmigaOS 4 with 3694 games (retroplays collection)
+# AmigaOS 4 with 3694 games (retroplays collection)
 csv: 362071 bytes
 db: 417792 bytes
 
 
-on repo scan
+### on repo scan
 DBG: save_list() to csv time taken: 0.010834
 DBG: save_list() to sqlite3 db time taken: 12.692094
 
-on app start
+### on app start
 DBG: load_games() from csv time taken: 0.054332
 DBG: load_games() from sqlite3 db time taken: 0.127604
+
+## GCC 8 compiled
+
+### on repo scan
+DBG: save_list() to csv time taken: 0.025690
+DBG: save_list() to sqlite3 db time taken: 12.891705
+
+### on app start
+DBG: load_games() from csv time taken: 0.056201
+DBG: load_games() from sqlite3 db time taken: 0.022947
 

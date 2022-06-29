@@ -33,9 +33,12 @@ void save_to_csv(const char *, const int);
 void read_tool_types(void);
 int get_title_from_slave(char *, char *);
 const char *get_directory_name(const char *);
-const char *get_directory_path(const char *);
+char *get_directory_path(const char *);
 char *get_executable_name(int, char **);
 void open_current_dir(void);
 void get_path(char *, char *);
+void load_games_db_list(void);
+void save_to_db(const char *, const int);
 
 #endif
+

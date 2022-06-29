@@ -706,7 +706,7 @@ void app_start(void)
 		
 		// Check load from db
 		t = clock();
-		load_games_db_list(csvFilename);
+		load_games_db_list();
 		t = clock() - t;
 		time_taken = ((double)t)/CLOCKS_PER_SEC;
 		printf("DBG: load_games() from sqlite3 db time taken: %f\n", time_taken);
