@@ -38,7 +38,7 @@ CFLAGS_030	= -c -mcpu=68030 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68030 -
 CFLAGS_040	= -c -mcpu=68040 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68040 -DRELEASE_DATE=$(DATE)
 CFLAGS_060	= -c -mcpu=68060 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68060 -DRELEASE_DATE=$(DATE)
 CFLAGS_MOS	= -c -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=MorphOS -DRELEASE_DATE=$(DATE)
-CFLAGS_OS4	= -c -Os -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 -DRELEASE_DATE=$(DATE)
+CFLAGS_OS4	= -c -O3 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 -DRELEASE_DATE=$(DATE)
 
 ##########################################################################
 # Builder settings
@@ -110,7 +110,7 @@ include make_includes/obj_os4.inc
 ##########################################################################
 
 clean:
-	rm iGame iGame.* src/funcs*.o src/iGameGUI*.o src/iGameMain*.o src/strfuncs*.o src/iGame_cat*.o $(catalog_files)
+	rm iGame iGame.030 iGame.040 iGame.060 iGame.MOS iGame.OS4 $(OBJS) $(OBJS_030) $(OBJS_040) $(OBJS_060) $(OBJS_MOS) $(OBJS_OS4) $(catalog_files)
 
 # pack everything in a nice lha file
 release: $(catalog_files)

@@ -36,3 +36,14 @@ DBG: save_list() to sqlite3 db time taken: 12.891705
 DBG: load_games() from csv time taken: 0.056201
 DBG: load_games() from sqlite3 db time taken: 0.022947
 
+
+## GCC 11 compiled
+
+### on repo scan
+DBG: save_list() to csv time taken: 0.021456
+DBG: save_list() to sqlite3 db time taken: 15.507367
+
+### on app start
+DBG: load_games() from csv time taken: 0.055040
+DBG: load_games() from sqlite3 db time taken: 0.017565
+
