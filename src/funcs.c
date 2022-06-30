@@ -30,19 +30,19 @@
 #include <proto/lowlevel.h>
 #include <proto/wb.h>
 
-#if defined(__amigaos4__)
+// #if defined(__amigaos4__)
 #include <proto/exec.h>
 #include <proto/dos.h>
 #include <proto/icon.h>
 #include <proto/graphics.h>
 #include <proto/muimaster.h>
-#else
-#include <clib/exec_protos.h>
-#include <clib/dos_protos.h>
-#include <clib/icon_protos.h>
-#include <clib/muimaster_protos.h>
-#include <clib/graphics_protos.h>
-#endif
+// #else
+// #include <clib/exec_protos.h>
+// #include <clib/dos_protos.h>
+// #include <clib/icon_protos.h>
+// #include <clib/muimaster_protos.h>
+// #include <clib/graphics_protos.h>
+// #endif
 
 /* System */
 #if defined(__amigaos4__)
@@ -67,9 +67,9 @@
 #include "funcs.h"
 
 extern struct ObjApp* app;
-extern struct Library *GfxBase;
+// extern struct Library *GfxBase;
 extern struct Library *IconBase;
-extern struct Library *IntuitionBase;
+// extern struct Library *IntuitionBase;
 extern char* executable_name;
 
 /* global variables */
@@ -695,31 +695,31 @@ void app_start(void)
 
 	const BPTR gamesListLock = Lock(csvFilename, ACCESS_READ);
 	if (gamesListLock) {
-		
-		
+
+
 		clock_t t;
 		t = clock();
 		load_games_csv_list(csvFilename);
 		t = clock() - t;
 		double time_taken = ((double)t)/CLOCKS_PER_SEC;
 		printf("DBG: load_games() from csv time taken: %f\n", time_taken);
-		
+
 		// Check load from db
 		t = clock();
 		load_games_db_list();
 		t = clock() - t;
 		time_taken = ((double)t)/CLOCKS_PER_SEC;
 		printf("DBG: load_games() from sqlite3 db time taken: %f\n", time_taken);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
 		// load_games_csv_list(csvFilename);
 	} else {
 		load_games_list(DEFAULT_GAMESLIST_FILE);
@@ -1891,7 +1891,7 @@ void save_list(const int check_exists)
 	t = clock() - t;
 	double time_taken = ((double)t)/CLOCKS_PER_SEC;
 	printf("DBG: save_list() to csv time taken: %f\n", time_taken);
-	
+
 	// Check save to db
 	t = clock();
 	save_to_db(DEFAULT_GAMESLIST_FILE, check_exists);

@@ -29,11 +29,11 @@ LINK		= m68k-amigaos-gcc
 CC_PPC		= ppc-amigaos-gcc
 LINK_PPC	= ppc-amigaos-gcc
 
-INCLUDES	= -I$(NDK_INC) -I$(MUI38_INC)
-INCLUDES_OS4= -ISDK:MUI/C/include
+INCLUDES	= -I$(NDK_INC) -I$(MUI50_INC) -I/opt/sdk/sqlite/include
+INCLUDES_OS4= -ISDK:MUI/C/include -I$(MUI50_INC)
 INCLUDES_MOS= -I$(NDK_INC) -I$(MUI50_INC)
 
-CFLAGS		= -c -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68000 -DRELEASE_DATE=$(DATE)
+CFLAGS		= -c -O2 -fomit-frame-pointer -std=c99 -DCPU_VERS=68000 -DRELEASE_DATE=$(DATE)
 CFLAGS_030	= -c -mcpu=68030 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68030 -DRELEASE_DATE=$(DATE)
 CFLAGS_040	= -c -mcpu=68040 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68040 -DRELEASE_DATE=$(DATE)
 CFLAGS_060	= -c -mcpu=68060 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68060 -DRELEASE_DATE=$(DATE)
@@ -44,9 +44,9 @@ CFLAGS_OS4	= -c -O3 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 -DRELEASE_DATE=$(DATE)
 # Builder settings
 ##########################################################################
 #MKLIB			= join
-LIBFLAGS		= -v -lamiga -lstubs -o
+LIBFLAGS		= -v -L/opt/sdk/sqlite/lib -lamiga -lstubs -lsqlite3 -noixemul -o
 LIBFLAGS_MOS	= -v -lamiga -lstubs -o
-LIBFLAGS_OS4	= -lsqlite3 -o 
+LIBFLAGS_OS4	= -v -lsqlite3 -o
 
 ##########################################################################
 # Object files which are part of iGame
@@ -136,4 +136,3 @@ clean-release:
 	rm -rf iGame_rel/iGame-$(DATE)
 	rm iGame_rel/iGame-$(DATE).lha
 	rm iGame_rel/iGame-$(DATE).info
-

@@ -28,17 +28,17 @@
 #include <clib/alib_protos.h>
 #include <proto/wb.h>
 
-#if defined(__amigaos4__)
+// #if defined(__amigaos4__)
 #include <proto/exec.h>
 #include <proto/dos.h>
 #include <proto/icon.h>
 #include <proto/muimaster.h>
-#else
-#include <clib/exec_protos.h>
-#include <clib/dos_protos.h>
-#include <clib/icon_protos.h>
-#include <clib/muimaster_protos.h>
-#endif
+// #else
+// #include <clib/exec_protos.h>
+// #include <clib/dos_protos.h>
+// #include <clib/icon_protos.h>
+// #include <clib/muimaster_protos.h>
+// #endif
 
 /* System */
 #if defined(__amigaos4__)
@@ -243,7 +243,7 @@ int getItems(void *unused, int cntCols, char **fields, char **colNames)
 
 	item_games = (games_list *)calloc(1, sizeof(games_list));
 	item_games->next = NULL;
-				
+
 	// item_games->index = 0;
 	item_games->exists = 0;
 	item_games->deleted = 0;
@@ -267,7 +267,7 @@ int getItems(void *unused, int cntCols, char **fields, char **colNames)
 	{
 		games = item_games;
 	}
-	
+
   return 0;
 }
 
@@ -280,7 +280,7 @@ void load_games_db_list(void)
 	}
 
 	sqlGetItems(getItems);
-	
+
 	// add_games_to_listview();
 }
 
@@ -342,7 +342,7 @@ void save_to_csv(const char *filename, const int check_exists)
 void save_to_db(const char *filename, const int check_exists)
 {
 	sqlite3 *db = sqlDBOpen();
-	
+
 	const char* saving_message = (const char*)GetMBString(MSG_SavingGamelist);
 	set(app->TX_Status, MUIA_Text_Contents, saving_message);
 
@@ -378,7 +378,7 @@ void save_to_db(const char *filename, const int check_exists)
 	}
 
 	sqlite3_close(db);
-	status_show_total();	
+	status_show_total();
 }
 
 void read_tool_types(void)
@@ -654,7 +654,7 @@ void open_current_dir(void)
 	}
 
 	//Open path directory
-	OpenWorkbenchObject((char *)path_only);
+	OpenWorkbenchObject((char *)path_only, TAG_DONE);
 	free(path_only); // get_directory_path uses malloc()
 }
 
