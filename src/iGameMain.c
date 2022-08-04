@@ -43,7 +43,7 @@
 #include "iGameExtern.h"
 #include "fsfuncs.h"
 #include "funcs.h"
-#include "sqldb.h"
+// #include "sqldb.h"
 #include "iGameGUI.h"
 
 /* Increase stack size */

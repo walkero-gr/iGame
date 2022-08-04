@@ -14,7 +14,7 @@ src/iGameMain_OS4.o: src/iGameMain.c src/sqldb.h
 src/strfuncs_OS4.o: src/strfuncs.c src/strfuncs.h
 	$(CC_PPC) $(CFLAGS_OS4) $(INCLUDES_OS4) -o $@ src/strfuncs.c
 
-src/fsfuncs_OS4.o: src/fsfuncs.c src/fsfuncs.h src/sqldb.h
+src/fsfuncs_OS4.o: src/fsfuncs.c src/fsfuncs.h src/funcs.h src/iGameExtern.h src/sqldb.h
 	$(CC_PPC) $(CFLAGS_OS4) $(INCLUDES_OS4) -o $@ src/fsfuncs.c
 
 src/sqldb_OS4.o: src/sqldb.c src/sqldb.h

@@ -33,7 +33,8 @@ INCLUDES	= -I$(NDK_INC) -I$(MUI50_INC) -I/opt/sdk/sqlite/include
 INCLUDES_OS4= -ISDK:MUI/C/include -I$(MUI50_INC)
 INCLUDES_MOS= -I$(NDK_INC) -I$(MUI50_INC)
 
-CFLAGS		= -c -O2 -fomit-frame-pointer -std=c99 -DCPU_VERS=68000 -DRELEASE_DATE=$(DATE)
+# CFLAGS		= -c -O2 -noixemul -fomit-frame-pointer -std=c99 -DCPU_VERS=68000 -DRELEASE_DATE=$(DATE)
+CFLAGS		= -c -Os -noixemul -fomit-frame-pointer -DCPU_VERS=68000 -DRELEASE_DATE=$(DATE)
 CFLAGS_030	= -c -mcpu=68030 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68030 -DRELEASE_DATE=$(DATE)
 CFLAGS_040	= -c -mcpu=68040 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68040 -DRELEASE_DATE=$(DATE)
 CFLAGS_060	= -c -mcpu=68060 -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=68060 -DRELEASE_DATE=$(DATE)
@@ -44,7 +45,8 @@ CFLAGS_OS4	= -c -O3 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 -DRELEASE_DATE=$(DATE)
 # Builder settings
 ##########################################################################
 #MKLIB			= join
-LIBFLAGS		= -v -L/opt/sdk/sqlite/lib -lamiga -lstubs -lsqlite3 -noixemul -o
+# LIBFLAGS		= -v -noixemul -L/opt/sdk/sqlite/lib -L/opt/sdk/MUI_5.0/C/lib -lamiga -lstubs -lsqlite3 -lmui -o
+LIBFLAGS		= -v -noixemul -lamiga -lstubs -o
 LIBFLAGS_MOS	= -v -lamiga -lstubs -o
 LIBFLAGS_OS4	= -v -lsqlite3 -o
 
