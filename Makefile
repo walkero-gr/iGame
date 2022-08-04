@@ -46,7 +46,7 @@ CFLAGS_OS4	= -c -O3 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 -DRELEASE_DATE=$(DATE)
 ##########################################################################
 #MKLIB			= join
 # LIBFLAGS		= -v -noixemul -L/opt/sdk/sqlite/lib -L/opt/sdk/MUI_5.0/C/lib -lamiga -lstubs -lsqlite3 -lmui -o
-LIBFLAGS		= -v -noixemul -lamiga -lstubs -o
+LIBFLAGS		= -v -noixemul -lamiga -lstubs -lmui -o
 LIBFLAGS_MOS	= -v -lamiga -lstubs -o
 LIBFLAGS_OS4	= -v -lsqlite3 -o
 

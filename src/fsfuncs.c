@@ -279,7 +279,7 @@ void load_games_db_list(void)
 		games = NULL;
 	}
 
-	sqlGetItems(getItems);
+	// sqlGetItems(getItems);
 
 	// add_games_to_listview();
 }
