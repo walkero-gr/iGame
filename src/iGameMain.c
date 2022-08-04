@@ -128,11 +128,11 @@ int main(int argc, char **argv)
 	app = CreateApp();
 	if (app)
 	{
-		 if (!check_path_exists((STRPTR)"PROGDIR:data.db"))
-		{
-			// TODO: Check if this was succesful and show an error message or disable the db features
-			createDB();
-		}
+		//  if (!check_path_exists((STRPTR)"PROGDIR:data.db"))
+		// {
+		// 	// TODO: Check if this was succesful and show an error message or disable the db features
+		// 	createDB();
+		// }
 		app_start();
 	}
 	else
