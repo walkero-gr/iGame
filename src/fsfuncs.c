@@ -28,17 +28,17 @@
 #include <clib/alib_protos.h>
 #include <proto/wb.h>
 
-// #if defined(__amigaos4__)
+#if defined(__amigaos4__)
 #include <proto/exec.h>
 #include <proto/dos.h>
 #include <proto/icon.h>
 #include <proto/muimaster.h>
-// #else
-// #include <clib/exec_protos.h>
-// #include <clib/dos_protos.h>
-// #include <clib/icon_protos.h>
-// #include <clib/muimaster_protos.h>
-// #endif
+#else
+#include <clib/exec_protos.h>
+#include <clib/dos_protos.h>
+#include <clib/icon_protos.h>
+#include <clib/muimaster_protos.h>
+#endif
 
 /* System */
 #if defined(__amigaos4__)
@@ -47,7 +47,7 @@
 #endif
 #include <libraries/asl.h>
 
-// #include <sqlite3.h>
+#include <sqlite3.h>
 
 /* ANSI C */
 #include <stdio.h>
@@ -61,7 +61,7 @@
 #include "iGameExtern.h"
 #include "strfuncs.h"
 #include "funcs.h"
-// #include "sqldb.h"
+#include "sqldb.h"
 #include "fsfuncs.h"
 
 extern struct ObjApp* app;
@@ -279,7 +279,7 @@ void load_games_db_list(void)
 		games = NULL;
 	}
 
-	// sqlGetItems(getItems);
+	sqlGetItems(getItems);
 
 	// add_games_to_listview();
 }
@@ -514,6 +514,7 @@ int get_title_from_slave(char* slave, char* title)
 	FILE* fp = fopen(slave, "rbe");
 	if (fp == NULL)
 	{
+		printf("DBG: get_title_from_slave() 0\n");
 		return 1;
 	}
 
@@ -521,10 +522,10 @@ int get_title_from_slave(char* slave, char* title)
 	fseek(fp, 32, SEEK_SET);
 	fread(&sl, 1, sizeof sl, fp);
 
-	//sl.Version = (sl.Version>>8) | (sl.Version<<8);
+	// sl.version = (sl.version>>8) | (sl.version<<8);
 	//sl.name = (sl.name>>8) | (sl.name<<8);
 
-	//printf ("[%s] [%d]\n", sl.ID, sl.Version);
+	// printf ("[%s] [%d]\n", sl.id, sl.version);
 
 	//sl.name holds the offset for the slave name
 	fseek(fp, sl.name + 32, SEEK_SET);
@@ -533,22 +534,30 @@ int get_title_from_slave(char* slave, char* title)
 
 	if (sl.version < 10)
 	{
+		// TODO: Close first the opened file?
+		printf("DBG: get_title_from_slave() return without closing first\n");
+		fclose(fp);
 		return 1;
 	}
 
 	for (int i = 0; i <= 99; i++)
 	{
+		printf("DBG: get_title_from_slave() 1\n");
 		slave_title[i] = fgetc(fp);
 		if (slave_title[i] == '\n')
 		{
+		printf("DBG: get_title_from_slave() 2\n");
 			slave_title[i] = '\0';
+		printf("DBG: get_title_from_slave() 3\n");
 			break;
 		}
 	}
 
 	strcpy(title, slave_title);
+	printf("DBG: get_title_from_slave() %s\n", title);
 	fclose(fp);
 
+		printf("DBG: get_title_from_slave() 4\n");
 	return 0;
 }
 

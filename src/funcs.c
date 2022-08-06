@@ -30,19 +30,19 @@
 #include <proto/lowlevel.h>
 #include <proto/wb.h>
 
-// #if defined(__amigaos4__)
+#if defined(__amigaos4__)
 #include <proto/exec.h>
 #include <proto/dos.h>
 #include <proto/icon.h>
 #include <proto/graphics.h>
 #include <proto/muimaster.h>
-// #else
-// #include <clib/exec_protos.h>
-// #include <clib/dos_protos.h>
-// #include <clib/icon_protos.h>
-// #include <clib/muimaster_protos.h>
-// #include <clib/graphics_protos.h>
-// #endif
+#else
+#include <clib/exec_protos.h>
+#include <clib/dos_protos.h>
+#include <clib/icon_protos.h>
+#include <clib/muimaster_protos.h>
+#include <clib/graphics_protos.h>
+#endif
 
 /* System */
 #if defined(__amigaos4__)
@@ -67,7 +67,7 @@
 #include "funcs.h"
 
 extern struct ObjApp* app;
-// extern struct Library *GfxBase;
+extern struct Library *GfxBase;
 extern struct Library *IconBase;
 // extern struct Library *IntuitionBase;
 extern char* executable_name;
@@ -697,19 +697,23 @@ void app_start(void)
 	if (gamesListLock) {
 
 
-		clock_t t;
-		t = clock();
+		// clock_t t;
+		// t = clock();
+		printf("DBG: load_games_csv_list()\n");
 		load_games_csv_list(csvFilename);
-		t = clock() - t;
-		double time_taken = ((double)t)/CLOCKS_PER_SEC;
-		printf("DBG: load_games() from csv time taken: %f\n", time_taken);
+		printf("DBG: load_games_csv_list() finished\n");
+		// t = clock() - t;
+		// double time_taken = ((double)t)/CLOCKS_PER_SEC;
+		// printf("DBG: load_games() from csv time taken: %ld\n", time_taken);
 
 		// Check load from db
-		t = clock();
-		load_games_db_list();
-		t = clock() - t;
-		time_taken = ((double)t)/CLOCKS_PER_SEC;
-		printf("DBG: load_games() from sqlite3 db time taken: %f\n", time_taken);
+		// t = clock();
+		// printf("DBG: load_games_db_list()\n");
+		// load_games_db_list();
+		// printf("DBG: load_games_db_list() finished\n");
+		// t = clock() - t;
+		// time_taken = ((double)t)/CLOCKS_PER_SEC;
+		// printf("DBG: load_games() from sqlite3 db time taken: %ld\n", time_taken);
 
 
 
@@ -1015,9 +1019,10 @@ void launch_game(void)
 void scan_repositories(void)
 {
 	char repotemp[256], helperstr[256];
-
+	printf("DBG: scan_repositories() 1\n");
 	if (repos)
 	{
+	printf("DBG: scan_repositories() 2\n");
 		for (item_games = games; item_games != NULL; item_games = item_games->next)
 		{
 			//only apply the not exists hack to slaves that are in the current repos, that will be scanned later
@@ -1027,30 +1032,43 @@ void scan_repositories(void)
 			else
 				item_games->exists = 1;
 		}
+	printf("DBG: scan_repositories() 3\n");
 
 		const BPTR currentlock = Lock((CONST_STRPTR)PROGDIR, ACCESS_READ);
 
+	printf("DBG: scan_repositories() 4\n");
 		for (item_repos = repos; item_repos != NULL; item_repos = item_repos->next)
 		{
+			printf("DBG: scan_repositories() 5\n");
 			sprintf(repotemp, "%s", item_repos->repo);
+			printf("DBG: scan_repositories() 6 %s\n", item_repos->repo);
 			sprintf(helperstr, (const char*)GetMBString(MSG_ScanningPleaseWait), repotemp);
+			printf("DBG: scan_repositories() 7\n");
 			set(app->TX_Status, MUIA_Text_Contents, helperstr);
+			printf("DBG: scan_repositories() 8\n");
 			const BPTR oldlock = Lock((unsigned char*)repotemp, ACCESS_READ);
+			printf("DBG: scan_repositories() 9\n");
 
 			if (oldlock != 0)
 			{
+				printf("DBG: scan_repositories() 10\n");
 				CurrentDir(oldlock);
 				follow_thread(oldlock, 0);
 				CurrentDir(currentlock);
 			}
 			else
 			{
+				printf("DBG: scan_repositories() 11\n");
 				//could not lock
 			}
+
+			// TODO: We need to unlock oldlock ?
 		}
 
-		save_list(1);
-		refresh_list(1);
+		// TODO: We need to unlock currentlock ?
+	printf("DBG: scan_repositories() 20\n");
+		// save_list(1);
+		// refresh_list(1);
 	}
 }
 
@@ -1709,10 +1727,12 @@ static void follow_thread(BPTR lock, int tab_level)
 	int exists = 0, j;
 	char str[512], fullpath[512], temptitle[256];
 
+	printf("DBG: follow_thread() 1\n");
 	/*  if at the end of the road, don't print anything */
 	if (!lock)
 		return;
 
+	printf("DBG: follow_thread() 2\n");
 	/*  allocate space for a FileInfoBlock */
 	struct FileInfoBlock* m = (struct FileInfoBlock *)AllocMem(sizeof(struct FileInfoBlock), MEMF_CLEAR);
 
@@ -1720,6 +1740,7 @@ static void follow_thread(BPTR lock, int tab_level)
 	if (m->fib_DirEntryType <= 0)
 		return;
 
+	printf("DBG: follow_thread() 3\n");
 	/*  The first call to Examine fills the FileInfoBlock with information
 	about the directory.  If it is called at the root level, it contains
 	the volume name of the disk.  Thus, this program is only printing
@@ -1728,19 +1749,23 @@ static void follow_thread(BPTR lock, int tab_level)
 
 	while ((success = ExNext(lock, m)))
 	{
+		// printf("DBG: follow_thread() 4\n");
 		/*  Print what we've got: */
-		if (m->fib_DirEntryType > 0)
-		{
-		}
+		// TODO: Probably this is not needed
+		// if (m->fib_DirEntryType > 0)
+		// {
+		// }
 
 		//make m->fib_FileName to lower
 		const int kp = strlen((char *)m->fib_FileName);
 		for (int s = 0; s < kp; s++) m->fib_FileName[s] = tolower(m->fib_FileName[s]);
 		if (strcasestr(m->fib_FileName, ".slave"))
 		{
+			printf("DBG: follow_thread() 5 %s\n", m->fib_FileName);
 			NameFromLock(lock, (unsigned char*)str, 511);
 			sprintf(fullpath, "%s/%s", str, m->fib_FileName);
 
+			printf("DBG: follow_thread() 6 %s\n", fullpath);
 			/* add the slave to the gameslist (if it does not already exist) */
 			for (item_games = games; item_games != NULL; item_games = item_games->next)
 			{
@@ -1751,11 +1776,14 @@ static void follow_thread(BPTR lock, int tab_level)
 					break;
 				}
 			}
+			printf("DBG: follow_thread() 7\n");
 			if (exists == 0)
 			{
+			printf("DBG: follow_thread() 8\n");
 				item_games = (games_list *)calloc(1, sizeof(games_list));
 				item_games->next = NULL;
 
+			printf("DBG: follow_thread() 9\n");
 				/* strip the path from the slave file and get the rest */
 				for (j = strlen(str) - 1; j >= 0; j--)
 				{
@@ -1763,14 +1791,17 @@ static void follow_thread(BPTR lock, int tab_level)
 						break;
 				}
 
+			printf("DBG: follow_thread() 10\n");
 				//CHANGE 2007-12-03: init n=0 here
 				int n = 0;
 				for (int k = j + 1; k <= strlen(str) - 1; k++)
 					temptitle[n++] = str[k];
 				temptitle[n] = '\0';
 
+			printf("DBG: follow_thread() 11\n");
 				if (current_settings->titles_from_dirs)
 				{
+			printf("DBG: follow_thread() 12\n");
 					// If the TITLESFROMDIRS tooltype is enabled, set Titles from Directory names
 					const char* title = get_directory_name(fullpath);
 					if (title != NULL)
@@ -1785,33 +1816,42 @@ static void follow_thread(BPTR lock, int tab_level)
 							strcpy(item_games->title, title_with_spaces);
 						}
 					}
+			printf("DBG: follow_thread() 13\n");
 				}
 				else
 				{
+			printf("DBG: follow_thread() 14\n");
 					// Default behavior: set Titles by the .slave contents
 					if (get_title_from_slave(fullpath, item_games->title))
 						strcpy(item_games->title, temptitle);
+			printf("DBG: follow_thread() 15\n");
 				}
 
+			printf("DBG: follow_thread() 16\n");
 				while (check_dup_title(item_games->title))
 				{
 					strcat(item_games->title, " Alt");
 				}
 
+			printf("DBG: follow_thread() 17\n");
 				strcpy(item_games->genre, GetMBString(MSG_UnknownGenre));
 				strcpy(item_games->path, fullpath);
+			printf("DBG: follow_thread() 18\n");
 				item_games->favorite = 0;
 				item_games->times_played = 0;
 				item_games->last_played = 0;
 				item_games->exists = 1;
 				item_games->hidden = 0;
 
+			printf("DBG: follow_thread() 19\n");
 				if (games == NULL)
 				{
+			printf("DBG: follow_thread() 20\n");
 					games = item_games;
 				}
 				else
 				{
+			printf("DBG: follow_thread() 21\n");
 					item_games->next = games;
 					games = item_games;
 				}
@@ -1844,6 +1884,7 @@ static void follow_thread(BPTR lock, int tab_level)
 
 static void refresh_list(const int check_exists)
 {
+	printf("DBG: refresh_list() 1\n");
 	DoMethod(app->LV_GamesList, MUIM_List_Clear);
 	total_games = 0;
 	set(app->LV_GamesList, MUIA_List_Quiet, TRUE);
@@ -1885,19 +1926,23 @@ static void refresh_list(const int check_exists)
 
 void save_list(const int check_exists)
 {
-	clock_t t;
-	t = clock();
+	// clock_t t;
+	// t = clock();
+	printf("DBG: save_to_csv()\n");
 	save_to_csv(DEFAULT_GAMESLIST_FILE, check_exists);
-	t = clock() - t;
-	double time_taken = ((double)t)/CLOCKS_PER_SEC;
-	printf("DBG: save_list() to csv time taken: %f\n", time_taken);
+	printf("DBG: save_to_csv() finished\n");
+	// t = clock() - t;
+	// double time_taken = ((double)t)/CLOCKS_PER_SEC;
+	// printf("DBG: save_list() to csv time taken: %f\n", time_taken);
 
 	// Check save to db
-	t = clock();
+	// t = clock();
+	printf("DBG: save_to_db()\n");
 	save_to_db(DEFAULT_GAMESLIST_FILE, check_exists);
-	t = clock() - t;
-	time_taken = ((double)t)/CLOCKS_PER_SEC;
-	printf("DBG: save_list() to sqlite3 db time taken: %f\n", time_taken);
+	printf("DBG: save_to_db() finished\n");
+	// t = clock() - t;
+	// time_taken = ((double)t)/CLOCKS_PER_SEC;
+	// printf("DBG: save_list() to sqlite3 db time taken: %f\n", time_taken);
 }
 
 void save_list_as(void)
