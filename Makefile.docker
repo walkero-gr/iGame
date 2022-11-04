@@ -41,34 +41,55 @@ ifneq ($(origin DRONE_TAG),undefined)
 else
 	VERS_FLAGS = -DRELEASE_DATE=$(DATEISO)
 endif
-
 ##########################################################################
 # Compiler settings
 ##########################################################################
-CC			= vc
-LINK		= vc
-CC_PPC		= vc
-LINK_PPC	= vc
+ifeq ($(USE_GCC),yes)
+	CC			= m68k-amigaos-gcc
+	LINK		= m68k-amigaos-gcc
+	CC_PPC		= ppc-amigaos-gcc
+	LINK_PPC	= ppc-amigaos-gcc
 
-INCLUDES	= -I$(NDK_INC) -I$(MUI38_INC) -I$(SQLITE_INC) -I$(POSIXLIB_INC)
-INCLUDES_OS4= -I$(AOS4_SDK_INC) -I$(MUI50_INC)
-INCLUDES_MOS= -I$(NDK_INC) -I$(MUI38_INC)
+	INCLUDES	= -I$(NDK_INC) -I$(SQLITE_INC)
+	INCLUDES_OS4= -ISDK:MUI/C/include -I$(MUI50_INC)
+	INCLUDES_MOS= -I$(NDK_INC) -I$(MUI50_INC)
 
-CFLAGS		= -c +aos68k -dontwarn=-1 -O2 -c99 -DCPU_VERS=68000 $(VERS_FLAGS)
-CFLAGS_030	= -c +aos68k -cpu=68030 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68030 $(VERS_FLAGS)
-CFLAGS_040	= -c +aos68k -cpu=68040 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68040 $(VERS_FLAGS)
-CFLAGS_060	= -c +aos68k -cpu=68060 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68060 $(VERS_FLAGS)
-CFLAGS_MOS	= -c +morphos -dontwarn=-1 -O2 -DCPU_VERS=MorphOS $(VERS_FLAGS)
-CFLAGS_OS4	= -c +aosppc -dontwarn=-1 -O2 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 $(VERS_FLAGS)
+	CFLAGS		= -c -Os -noixemul -fomit-frame-pointer -std=c99 -DCPU_VERS=68000 $(VERS_FLAGS)
+	CFLAGS_030	= -c -mcpu=68030 -Os -noixemul -fomit-frame-pointer -std=c99 -DCPU_VERS=68030 $(VERS_FLAGS) -g -gstabs
+	CFLAGS_040	= -c -mcpu=68040 -Os -noixemul -fomit-frame-pointer -std=c99 -DCPU_VERS=68040 $(VERS_FLAGS)
+	CFLAGS_060	= -c -mcpu=68060 -Os -noixemul -fomit-frame-pointer -std=c99 -DCPU_VERS=68060 $(VERS_FLAGS)
+	CFLAGS_MOS	= -c -Os -fomit-frame-pointer -std=c99 -DCPU_VERS=MorphOS $(VERS_FLAGS)
+	CFLAGS_OS4	= -c -O3 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 $(VERS_FLAGS)
 
-##########################################################################
-# Builder settings
-##########################################################################
-#MKLIB			= join
-LIBFLAGS		= +aos68k -L/opt/sdk/sqlite/lib -L/opt/sdk/PosixLib/lib -lamiga -lsqlite3 -lposix -o
-LIBFLAGS_MOS	= +morphos -lamiga -o
-LIBFLAGS_OS4	= +aosppc -lamiga -o
+	LIBFLAGS		= -noixemul -L$(SQLITE_INC)/../lib -lamiga -lstubs -lsqlite3 -lmui -gstabs -o
+	LIBFLAGS_MOS	= -v -lamiga -lstubs -o
+	LIBFLAGS_OS4	= -v -lsqlite3 -o
+else
+	CC			= vc
+	LINK		= vc
+	CC_PPC		= vc
+	LINK_PPC	= vc
 
+	INCLUDES	= -I$(NDK_INC) -I$(MUI38_INC) -I$(SQLITE_INC) -I$(POSIXLIB_INC)
+	INCLUDES_OS4= -I$(AOS4_SDK_INC) -I$(MUI50_INC)
+	INCLUDES_MOS= -I$(NDK_INC) -I$(MUI38_INC)
+
+	CFLAGS		= -c +aos68k -dontwarn=-1 -O2 -c99 -DCPU_VERS=68000 $(VERS_FLAGS)
+	CFLAGS_030	= -c +aos68k -cpu=68030 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68030 $(VERS_FLAGS)
+	CFLAGS_040	= -c +aos68k -cpu=68040 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68040 $(VERS_FLAGS)
+	CFLAGS_060	= -c +aos68k -cpu=68060 -dontwarn=-1 -O2 -c99 -DCPU_VERS=68060 $(VERS_FLAGS)
+	CFLAGS_MOS	= -c +morphos -dontwarn=-1 -O2 -DCPU_VERS=MorphOS $(VERS_FLAGS)
+	CFLAGS_OS4	= -c +aosppc -dontwarn=-1 -O2 -D__USE_INLINE__ -DCPU_VERS=AmigaOS4 $(VERS_FLAGS)
+
+	##########################################################################
+	# Builder settings
+	##########################################################################
+	#MKLIB			= join
+	LIBFLAGS		= +aos68k -L/opt/sdk/sqlite/lib -L/opt/sdk/PosixLib/lib -lamiga -lsqlite3 -lposix -o
+	LIBFLAGS_MOS	= +morphos -lamiga -o
+	LIBFLAGS_OS4	= +aosppc -lamiga -o
+
+endif
 ##########################################################################
 # Object files which are part of iGame
 ##########################################################################

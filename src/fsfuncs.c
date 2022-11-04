@@ -243,7 +243,7 @@ int getItems(void *unused, int cntCols, char **fields, char **colNames)
 
 	item_games = (games_list *)calloc(1, sizeof(games_list));
 	item_games->next = NULL;
-				
+
 	// item_games->index = 0;
 	item_games->exists = 0;
 	item_games->deleted = 0;
@@ -267,11 +267,11 @@ int getItems(void *unused, int cntCols, char **fields, char **colNames)
 	{
 		games = item_games;
 	}
-	
+
   return 0;
 }
 
-void load_games_db_list(const char *filename)
+void load_games_db_list(void)
 {
 	if (games != NULL)
 	{
@@ -280,7 +280,7 @@ void load_games_db_list(const char *filename)
 	}
 
 	sqlGetItems(getItems);
-	
+
 	// add_games_to_listview();
 }
 
@@ -341,44 +341,44 @@ void save_to_csv(const char *filename, const int check_exists)
 
 void save_to_db(const char *filename, const int check_exists)
 {
-	sqlite3 *db = sqlDBOpen();
-	
-	const char* saving_message = (const char*)GetMBString(MSG_SavingGamelist);
-	set(app->TX_Status, MUIA_Text_Contents, saving_message);
+	// sqlite3 *db = sqlDBOpen();
 
-	for (item_games = games; item_games != NULL; item_games = item_games->next)
-	{
-		if (check_exists == 1)
-		{
-			if (item_games->exists == 1)
-			{
-				if (strlen(item_games->genre) == 0)
-					strcpy(item_games->genre, "Unknown");
-				sqlAddItem(
-					item_games->index, item_games->title, item_games->genre, item_games->path,
-					item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
-					db
-				);
-			}
-			else
-			{
-				strcpy(item_games->path, "");
-			}
-		}
-		else
-		{
-			if (strlen(item_games->genre) == 0)
-				strcpy(item_games->genre, "Unknown");
-				sqlAddItem(
-					item_games->index, item_games->title, item_games->genre, item_games->path,
-					item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
-					db
-				);
-		}
-	}
+	// const char* saving_message = (const char*)GetMBString(MSG_SavingGamelist);
+	// set(app->TX_Status, MUIA_Text_Contents, saving_message);
 
-	sqlite3_close(db);
-	status_show_total();	
+	// for (item_games = games; item_games != NULL; item_games = item_games->next)
+	// {
+	// 	if (check_exists == 1)
+	// 	{
+	// 		if (item_games->exists == 1)
+	// 		{
+	// 			if (strlen(item_games->genre) == 0)
+	// 				strcpy(item_games->genre, "Unknown");
+	// 			sqlAddItem(
+	// 				item_games->index, item_games->title, item_games->genre, item_games->path,
+	// 				item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
+	// 				db
+	// 			);
+	// 		}
+	// 		else
+	// 		{
+	// 			strcpy(item_games->path, "");
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		if (strlen(item_games->genre) == 0)
+	// 			strcpy(item_games->genre, "Unknown");
+	// 			sqlAddItem(
+	// 				item_games->index, item_games->title, item_games->genre, item_games->path,
+	// 				item_games->favorite, item_games->times_played, item_games->last_played, item_games->hidden,
+	// 				db
+	// 			);
+	// 	}
+	// }
+
+	// sqlite3_close(db);
+	// status_show_total();
 }
 
 void read_tool_types(void)
@@ -514,6 +514,7 @@ int get_title_from_slave(char* slave, char* title)
 	FILE* fp = fopen(slave, "rbe");
 	if (fp == NULL)
 	{
+		printf("DBG: get_title_from_slave() 0\n");
 		return 1;
 	}
 
@@ -521,10 +522,10 @@ int get_title_from_slave(char* slave, char* title)
 	fseek(fp, 32, SEEK_SET);
 	fread(&sl, 1, sizeof sl, fp);
 
-	//sl.Version = (sl.Version>>8) | (sl.Version<<8);
+	// sl.version = (sl.version>>8) | (sl.version<<8);
 	//sl.name = (sl.name>>8) | (sl.name<<8);
 
-	//printf ("[%s] [%d]\n", sl.ID, sl.Version);
+	// printf ("[%s] [%d]\n", sl.id, sl.version);
 
 	//sl.name holds the offset for the slave name
 	fseek(fp, sl.name + 32, SEEK_SET);
@@ -533,22 +534,30 @@ int get_title_from_slave(char* slave, char* title)
 
 	if (sl.version < 10)
 	{
+		// TODO: Close first the opened file?
+		printf("DBG: get_title_from_slave() return without closing first\n");
+		fclose(fp);
 		return 1;
 	}
 
 	for (int i = 0; i <= 99; i++)
 	{
+		printf("DBG: get_title_from_slave() 1\n");
 		slave_title[i] = fgetc(fp);
 		if (slave_title[i] == '\n')
 		{
+		printf("DBG: get_title_from_slave() 2\n");
 			slave_title[i] = '\0';
+		printf("DBG: get_title_from_slave() 3\n");
 			break;
 		}
 	}
 
 	strcpy(title, slave_title);
+	printf("DBG: get_title_from_slave() %s\n", title);
 	fclose(fp);
 
+		printf("DBG: get_title_from_slave() 4\n");
 	return 0;
 }
 
@@ -582,7 +591,7 @@ const char* get_directory_name(const char* str)
 
 // TODO: This seems OBSOLETE and can be replaced by getParentPath(). Needs investigation
 // Get the complete directory path from a full path containing a file
-const char *get_directory_path(const char *str)
+char *get_directory_path(const char *str)
 {
 	int pos1 = get_delimiter_position(str);
 	if (!pos1)
@@ -623,7 +632,7 @@ void open_current_dir(void)
 {
 	// Allocate Memory for variables
 	char *game_title = NULL;
-	const char *path_only = NULL;
+	char *path_only = NULL;
 
 	if (get_wb_version() < 44)
 	{
@@ -654,7 +663,7 @@ void open_current_dir(void)
 	}
 
 	//Open path directory
-	OpenWorkbenchObject((char *)path_only);
+	OpenWorkbenchObject((char *)path_only, TAG_DONE);
 	free(path_only); // get_directory_path uses malloc()
 }
 

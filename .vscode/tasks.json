@@ -10,7 +10,8 @@
                 "command": "make",
                 "args": [
                         "-f",
-                        "Makefile.docker"
+                        "Makefile.docker",
+                        "USE_GCC=yes"
                 ]
             },
             "problemMatcher": {
@@ -37,7 +38,8 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.030"
+                        "iGame.030",
+                        "USE_GCC=yes"
                 ]
             },
             "problemMatcher": {
@@ -64,7 +66,8 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.040"
+                        "iGame.040",
+                        "USE_GCC=yes"
                 ]
             },
             "problemMatcher": {
@@ -91,7 +94,8 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.060"
+                        "iGame.060",
+                        "USE_GCC=yes"
                 ]
             },
             "problemMatcher": {

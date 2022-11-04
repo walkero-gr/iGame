@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${VBCC}/targets/m68k-amigaos/include/",
                 "${NDK_INC}",
-                "${MUI38_INC}"
+                "${MUI38_INC}",
+                "${SQLITE_INC}"
             ],
             "defines": [],
             "compilerPath": "${VBCC}/bin/vc",
@@ -20,7 +21,8 @@
                 "${workspaceFolder}/**",
                 "${VBCC}/targets/m68k-amigaos/include/",
                 "${NDK_INC}",
-                "${MUI50_INC}"
+                "${MUI50_INC}",
+                "${SQLITE_INC}"
             ],
             "defines": [],
             "compilerPath": "${VBCC}/bin/vc",
@@ -35,7 +37,8 @@
                 "${VBCC}/targets/ppc-amigaos/include/",
                 "${AOS4_SDK_INC}",
                 "${AOS4_NLIB_INC}",
-                "${MUI50_INC}"
+                "${MUI50_INC}",
+                "${SQLITE_INC}"
             ],
             "defines": [
                 "__amigaos4__",
@@ -52,7 +55,8 @@
                 "${workspaceFolder}/**",
                 "${VBCC}/targets/ppc-morphos/include/",
                 "${NDK_INC}",
-                "${MUI50_INC}"
+                "${MUI50_INC}",
+                "${SQLITE_INC}"
             ],
             "defines": [
                 "__MORPHOS__",

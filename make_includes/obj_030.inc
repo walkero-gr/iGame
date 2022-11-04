@@ -2,10 +2,14 @@
 # object files (030)
 ##########################################################################
 
-src/funcs_030.o: src/funcs.c src/iGame_strings.h src/strfuncs.h src/fsfuncs.h
+src/funcs_030.o: src/funcs.c src/funcs.h src/iGame_strings.h \
+	src/iGameExtern.h src/strfuncs.h src/fsfuncs.h src/funcs.h \
+	src/iGameGUI.h
 	$(CC) $(CFLAGS_030) $(INCLUDES) -o $@ src/funcs.c
 
-src/iGameGUI_030.o: src/iGameGUI.c src/iGameGUI.h src/iGame_strings.h src/fsfuncs.h
+src/iGameGUI_030.o: src/iGameGUI.c src/iGameGUI.h src/iGame_strings.h \
+	src/version.h src/iGameExtern.h src/fsfuncs.h src/funcs.h \
+	src/strfuncs.h
 	$(CC) $(CFLAGS_030) $(INCLUDES) -o $@ src/iGameGUI.c
 
 src/iGameMain_030.o: src/iGameMain.c src/sqldb.h
@@ -14,8 +18,10 @@ src/iGameMain_030.o: src/iGameMain.c src/sqldb.h
 src/strfuncs_030.o: src/strfuncs.c src/strfuncs.h
 	$(CC) $(CFLAGS_030) $(INCLUDES) -o $@ src/strfuncs.c
 
-src/fsfuncs_030.o: src/fsfuncs.c src/fsfuncs.h src/funcs.h src/iGameExtern.h src/sqldb.h
+src/fsfuncs_030.o: src/fsfuncs.c src/fsfuncs.h src/iGame_strings.h \
+	src/iGameExtern.h src/strfuncs.h src/funcs.h src/sqldb.h \
+	src/fsfuncs.h
 	$(CC) $(CFLAGS_030) $(INCLUDES) -o $@ src/fsfuncs.c
 
 src/sqldb_030.o: src/sqldb.c src/sqldb.h
-	$(CC_PPC) $(CFLAGS_030) $(INCLUDES) -o $@ src/sqldb.c
+	$(CC) $(CFLAGS_030) $(INCLUDES) -o $@ src/sqldb.c

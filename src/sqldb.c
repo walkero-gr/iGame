@@ -11,15 +11,15 @@
 
 static char dbFileName[] = "data.db";
 
-void printSqliteVer(void) 
-{    
+void printSqliteVer(void)
+{
   printf("%s\n", sqlite3_libversion());
 }
 /*
 static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
   if (NotUsed)
     NotUsed = 0;
-  
+
   for (int i = 0; i < argc; i++) {
     printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
   }
@@ -31,7 +31,7 @@ BOOL createDB(void)
 {
   sqlite3 *db;
   char *err_msg = 0;
-  
+
   int rc = sqlite3_open(dbFileName, &db);
   if (rc != SQLITE_OK) {
     fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
@@ -76,7 +76,7 @@ sqlite3 *sqlDBOpen(void)
     sqlite3_close(db);
     return 0;
   }
-  
+
   return db;
 }
 
@@ -156,7 +156,7 @@ BOOL sqlGetItems(int (*resultCallback)(void *, int, char **, char **))
 
   int rc = sqlite3_open(dbFileName, &db);
   if (rc != SQLITE_OK) {
-    //fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
+    fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(db));
     sqlite3_close(db);
     return FALSE;
   }
@@ -172,7 +172,7 @@ BOOL sqlGetItems(int (*resultCallback)(void *, int, char **, char **))
   free(sql);
 
   if (rc != SQLITE_OK) {
-    //fprintf(stderr, "SQL error: %s\n", err_msg);
+    fprintf(stderr, "SQL error: %s\n", err_msg);
     sqlite3_free(err_msg);
     sqlite3_close(db);
     return FALSE;
@@ -273,7 +273,7 @@ BOOL sqlGetItems(int (*resultCallback)(void *, int, char **, char **))
 //   int languageIdx = sqlite3_bind_parameter_index(res, ":language");
 //   int imageIdx    = sqlite3_bind_parameter_index(res, ":image");
 //   int descrIdx    = sqlite3_bind_parameter_index(res, ":descr");
-  
+
 //   sqlite3_bind_text(res, uuidIdx, uuid, -1, 0);
 //   sqlite3_bind_text(res, titleIdx, title, -1, 0);
 //   sqlite3_bind_int(res, addedIdx, now());
@@ -439,7 +439,7 @@ BOOL sqlGetItems(int (*resultCallback)(void *, int, char **, char **))
 //     sqlite3_close(db);
 //     return FALSE;
 //   }
-  
+
 //   CONST_STRPTR sql = "SELECT COUNT(*) AS cnt " \
 //         "FROM favourites " \
 //         "WHERE uuid = :uuid AND type = :type " \
@@ -451,12 +451,12 @@ BOOL sqlGetItems(int (*resultCallback)(void *, int, char **, char **))
 //     sqlite3_close(db);
 //     return FALSE;
 //   }
-    
+
 //   int uuidIdx = sqlite3_bind_parameter_index(res, ":uuid");
 //   int typeIdx = sqlite3_bind_parameter_index(res, ":type");
 //   sqlite3_bind_text(res, uuidIdx, uuid, -1, 0);
 //   sqlite3_bind_text(res, typeIdx, type, -1, 0);
-  
+
 //   int step = sqlite3_step(res);
 //   if (step == SQLITE_ROW) {
 //     if(sqlite3_column_int(res, 0) == 1)
