@@ -10,7 +10,8 @@
                 "command": "make",
                 "args": [
                         "-f",
-                        "Makefile.docker"
+                        "Makefile.docker",
+                        "CPU=000"
                 ]
             },
             "problemMatcher": {
@@ -37,7 +38,7 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.030"
+                        "CPU=030"
                 ]
             },
             "problemMatcher": {
@@ -64,7 +65,7 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.040"
+                        "CPU=040"
                 ]
             },
             "problemMatcher": {
@@ -91,7 +92,7 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.060"
+                        "CPU=060"
                 ]
             },
             "problemMatcher": {
@@ -118,7 +119,7 @@
                 "args": [
                         "-f",
                         "Makefile.docker",
-                        "iGame.MOS"
+                        "CPU=MOS"
                 ]
             },
             "problemMatcher": {
@@ -145,7 +146,7 @@
                 "args": [
                     "-f",
                     "Makefile.docker",
-                    "iGame.OS4"
+                    "CPU=OS4"
                 ]
             },
             "problemMatcher": {
