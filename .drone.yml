@@ -136,13 +136,13 @@ steps:
   - compile-m68k
   - compile-os4
   - compile-mos
-- name: deploy-all-binary
+- name: deploy-on-repo
   image: plugins/github-release
   settings:
-  api_key:
-    from_secret: GITHUB_RELEASE_API_KEY
-  files:
-    - "iGame-*.lha"
+    api_key:
+      from_secret: GITHUB_RELEASE_API_KEY
+    files:
+      - "iGame-*.lha"
   title: "iGame release ${DRONE_TAG}"
   depends_on:
   - create-release-lha
