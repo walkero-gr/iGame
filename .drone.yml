@@ -32,12 +32,39 @@ steps:
   - compile-m68k
   - compile-os4
   - compile-mos
+- name: Prepare test release
+  image: walkero/docker4amigavbcc:latest-base
+  environment:
+    OS4DEPOT_PASSPHRASE:
+      from_secret: OS4DEPOT_PASSPHRASE
+  commands:
+  - mkdir test-release
+  - cp iGame--$(date +'%Y%m%d').lha ./test-release/iGame-$(date +'%Y%m%d%H%M').lha
+  - sed -i "s/VERSION_TAG/nightly-$(date +'%Y%m%d%H%M')/" ./aminet.readme
+  - sed -i "s/VERSION_TAG/nightly-$(date +'%Y%m%d%H%M')/" ./os4depot.readme
+  - sed -i "s/OS4DEPOT_PASSPHRASE/$OS4DEPOT_PASSPHRASE/" ./os4depot.readme
+  - cp os4depot.readme ./test-release/os4depot.readme
+  - cp aminet.readme ./test-release/aminet.readme
+- name: Upload to TEST FTP
+  image: cschlosser/drone-ftps
+  environment:
+    FTP_USERNAME:
+      from_secret: TESTFTP_USERNAME
+    FTP_PASSWORD:
+      from_secret: TESTFTP_PASSWORD
+    PLUGIN_HOSTNAME: mediavault.amiga-projects.net:21
+    PLUGIN_SRC_DIR: /test-release
+    PLUGIN_DEST_DIR: ./web/betas
+    PLUGIN_SECURE: "false"
+    PLUGIN_VERIFY: "false"
+    PLUGIN_CLEAN_DIR: "false"
 
 trigger:
   branch:
     include:
     - master
     - develop
+    - enh-drone
   event:
     include:
     - push
