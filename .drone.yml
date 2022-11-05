@@ -45,6 +45,8 @@ steps:
   - sed -i "s/OS4DEPOT_PASSPHRASE/$OS4DEPOT_PASSPHRASE/" ./os4depot.readme
   - cp os4depot.readme ./test-release/os4depot.readme
   - cp aminet.readme ./test-release/aminet.readme
+  depends_on:
+  - create-release-lha
 - name: Upload to TEST FTP
   image: cschlosser/drone-ftps
   environment:
@@ -58,6 +60,8 @@ steps:
     PLUGIN_SECURE: "false"
     PLUGIN_VERIFY: "false"
     PLUGIN_CLEAN_DIR: "false"
+  depends_on:
+  - Prepare test release
 
 trigger:
   branch:
