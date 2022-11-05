@@ -39,12 +39,14 @@ steps:
       from_secret: OS4DEPOT_PASSPHRASE
   commands:
   - mkdir test-release
+  - ls -la ./
   - cp iGame--$(date +'%Y%m%d').lha ./test-release/iGame-$(date +'%Y%m%d%H%M').lha
   - sed -i "s/VERSION_TAG/nightly-$(date +'%Y%m%d%H%M')/" ./aminet.readme
   - sed -i "s/VERSION_TAG/nightly-$(date +'%Y%m%d%H%M')/" ./os4depot.readme
   - sed -i "s/OS4DEPOT_PASSPHRASE/$OS4DEPOT_PASSPHRASE/" ./os4depot.readme
-  - cp os4depot.readme ./test-release/os4depot.readme
-  - cp aminet.readme ./test-release/aminet.readme
+  - cp ./os4depot.readme ./test-release/os4depot.readme
+  - cp ./aminet.readme ./test-release/aminet.readme
+  - ls -la ./test-release
   depends_on:
   - create-release-lha
 - name: Upload to TEST FTP
