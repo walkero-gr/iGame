@@ -1,5 +1,23 @@
 kind: pipeline
 type: docker
+name: drone-agents-poweron
+
+clone:
+  disable: true
+
+steps:
+- name: drone-agents-poweron
+  image: walkero/hcloud:1.30
+  environment:
+    HCLOUD_TOKEN:
+      from_secret: HCLOUD_TOKEN
+  commands:
+    - hcloud server poweron drone-agents
+
+---
+
+kind: pipeline
+type: docker
 name: compile-tests
 
 workspace:
@@ -139,24 +157,6 @@ depends_on:
 
 node:
   agents: builders
-
----
-
-kind: pipeline
-type: docker
-name: drone-agents-poweron
-
-clone:
-  disable: true
-
-steps:
-- name: drone-agents-poweron
-  image: walkero/hcloud:1.30
-  environment:
-    HCLOUD_TOKEN:
-      from_secret: HCLOUD_TOKEN
-  commands:
-    - hcloud server poweron drone-agents
 
 ---
 
