@@ -51,7 +51,7 @@ steps:
   - compile-os4
   - compile-mos
 - name: Prepare test release
-  image: walkero/docker4amigavbcc:latest-base
+  image: walkero/lha-on-docker:latest
   environment:
     OS4DEPOT_PASSPHRASE:
       from_secret: OS4DEPOT_PASSPHRASE
@@ -146,6 +146,9 @@ steps:
   title: "iGame release ${DRONE_TAG}"
   depends_on:
   - create-release-lha
+
+
+
 
 trigger:
   event:
