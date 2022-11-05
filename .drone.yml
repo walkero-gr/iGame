@@ -185,10 +185,13 @@ steps:
 #   - Prepare Aminet release
 - name: Prepare OS4Depot release
   image: walkero/lha-on-docker:latest
+  environment:
+    OS4DEPOT_PASSPHRASE:
+      from_secret: OS4DEPOT_PASSPHRASE
   commands:
   - mkdir os4depot-release
   - cp iGame-${DRONE_TAG}-$(date +'%Y%m%d').lha ./os4depot-release/iGame.lha
-  - sed -i "s/VERSION_TAG/nightly-$(date +'%Y%m%d%H%M')/" ./os4depot.readme
+  - sed -i "s/VERSION_TAG/${DRONE_TAG}/" ./os4depot.readme
   - sed -i "s/OS4DEPOT_PASSPHRASE/$OS4DEPOT_PASSPHRASE/" ./os4depot.readme
   - cp ./os4depot.readme ./os4depot-release/iGame_lha.readme
   depends_on:
