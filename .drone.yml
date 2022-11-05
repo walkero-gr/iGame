@@ -178,6 +178,7 @@ steps:
 
 depends_on:
   - compile-tests
+  - compile-release-bytag
 
 trigger:
   status:
