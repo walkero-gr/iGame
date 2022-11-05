@@ -1,4 +1,6 @@
 ## iGame VERSION_TAG - [RELEASE_DATE]
+### Added
+- Added automatic release to Aminet and OS4Depot through the CI/CD whenever a new release tag is created at the repo
 ### Changed
 - Removed completely the Tooltypes. Now iGame defaults to the optimal settings and uses only the settings file to change its behaviour.
 - Now if the file "envarc:igame.prefs" exists then this is used by iGame, instead of the one that exists at the PROGDIR:. This way multiple iGame instances will have common settings (#173)
