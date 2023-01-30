@@ -22,7 +22,6 @@ trigger:
     include:
     - master
     - develop
-    - aws-cicd
   event:
     include:
     - push
@@ -103,7 +102,6 @@ trigger:
     include:
     - master
     - develop
-    - aws-cicd
   event:
     include:
     - push
