@@ -1,3 +1,16 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iGame 2.4\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.1\n"
+
 #. ## version $VER: igame.catalog 2.3 (18.12.2022)
 #. ## codeset 0
 #. ## language türkçe
@@ -162,12 +175,12 @@ msgid "Title"
 msgstr "Başlık"
 
 #. ;
-#: MSG_LA_PropertiesGenre
+#: MSG_LA_PropertiesGenre MSG_LA_AddGameGenre
 msgid "Genre:"
 msgstr "Tarz:"
 
 #. ;
-#: MSG_CY_PropertiesGenre0
+#: MSG_CY_PropertiesGenre0 MSG_CY_AddGameGenre0 MSG_UnknownGenre
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -197,12 +210,17 @@ msgid "Tooltypes"
 msgstr "Araç türleri"
 
 #. ;
-#: MSG_BT_PropertiesOK
+#: MSG_BT_PropertiesOK MSG_BT_SettingsSave
+#, fuzzy
 msgid "Save"
-msgstr "Tamam"
+msgstr ""
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"Tamam\n"
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"Kaydet"
 
 #. ;
-#: MSG_BT_PropertiesCancel
+#: MSG_BT_PropertiesCancel MSG_BT_AddGameCancel MSG_BT_SettingsCancel
 msgid "Cancel"
 msgstr "Vazgeç"
 
@@ -242,24 +260,9 @@ msgid "Path:"
 msgstr "Yol:"
 
 #. ;
-#: MSG_LA_AddGameGenre
-msgid "Genre:"
-msgstr "Tarz:"
-
-#. ;
-#: MSG_CY_AddGameGenre0
-msgid "Unknown"
-msgstr "Bilinmiyor"
-
-#. ;
-#: MSG_BT_AddGameOK
+#: MSG_BT_AddGameOK MSG_BT_AboutOK
 msgid "OK"
 msgstr "Tamam"
-
-#. ;
-#: MSG_BT_AddGameCancel
-msgid "Cancel"
-msgstr "Vazgeç"
 
 #. ;
 #: MSG_WI_About
@@ -268,13 +271,19 @@ msgstr "iGame Hakkında"
 
 #. ;
 #: MSG_TX_About
-msgid "Emmanuel Vasilakis (mrzammler@mm.st)\n& Contributors\n\n"
-msgstr " Emmanuel Vasilakis (mrzammler@mm.st)\n\nKatkıda Bulunanlar:\nDimitris Panokostas (midwan@gmail.com)\nGeorge Sokianos (walkero@gmail.com)\nChris Charabaruk (chris+igame@charabaruk.com)\nJavier R. \Santurde (tolkien)\n\n"
-
-#. ;
-#: MSG_BT_AboutOK
-msgid "OK"
-msgstr "Tamam"
+msgid ""
+"Emmanuel Vasilakis (mrzammler@mm.st)\n"
+"& Contributors\n"
+"\n"
+msgstr ""
+" Emmanuel Vasilakis (mrzammler@mm.st)\n"
+"\n"
+"Katkıda Bulunanlar:\n"
+"Dimitris Panokostas (midwan@gmail.com)\n"
+"George Sokianos (walkero@gmail.com)\n"
+"Chris Charabaruk (chris+igame@charabaruk.com)\n"
+"Javier R. \\Santurde (tolkien)\n"
+"\n"
 
 #. ;
 #: MSG_WI_Settings
@@ -372,19 +381,9 @@ msgid "Hide side panel"
 msgstr "Yan paneli gizle"
 
 #. ;
-#: MSG_BT_SettingsSave
-msgid "Save"
-msgstr "Kaydet"
-
-#. ;
 #: MSG_BT_SettingsUse
 msgid "Use"
 msgstr "Kullan"
-
-#. ;
-#: MSG_BT_SettingsCancel
-msgid "Cancel"
-msgstr "Vazgeç"
 
 #. ;
 #: MSG_SelectDir
@@ -400,11 +399,6 @@ msgstr "Çalıştırılabilir Oyun Dosyasını seç..."
 #: MSG_TotalNumberOfGames
 msgid "Total %d games."
 msgstr "Toplam oyun %d."
-
-#. ;
-#: MSG_UnknownGenre
-msgid "Unknown"
-msgstr "Bilinmiyor"
 
 #. ;
 #: MSG_FilterShowAll
@@ -438,8 +432,12 @@ msgstr "%s çalıştırılıyor"
 
 #. ;
 #: MSG_ErrorExecutingWhdload
-msgid "Error while executing the selected entry.\nPlease make sure WHDLoad is in your path."
-msgstr "WHDload veya oyunu yürütürken hata.\n Lütfen Whdload uygulumasının c dizininde olduğunu doğrulayın."
+msgid ""
+"Error while executing the selected entry.\n"
+"Please make sure WHDLoad is in your path."
+msgstr ""
+"WHDload veya oyunu yürütürken hata.\n"
+" Lütfen Whdload uygulumasının c dizininde olduğunu doğrulayın."
 
 #. ;
 #: MSG_ScanningPleaseWait
@@ -540,5 +538,3 @@ msgstr "Kayıt listesi yükleniyor. Lütfen bekleyin."
 #: MSG_ICONPICTURESTORE_FAILED
 msgid "Could not store default picture icon"
 msgstr "Varsayılan resim simgesi saklanamadı"
-
-#. ;

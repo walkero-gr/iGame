@@ -1,3 +1,16 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: iGame 2.4\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.3.1\n"
+
 #. ## version $VER: igame.catalog  2.4 (06.05.2023)
 #. ## codeset 0
 #. ## language german
@@ -159,17 +172,22 @@ msgid "Game Properties"
 msgstr "Spieleigenschaften"
 
 #. ;
-#: MSG_STR_PropertiesGameTitleTitle
+#: MSG_STR_PropertiesGameTitleTitle MSG_LV_GAMESLIST_TITLE
+#, fuzzy
 msgid "Title"
-msgstr "Spieletitel"
+msgstr ""
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"Spieletitel\n"
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"Titel"
 
 #. ;
-#: MSG_LA_PropertiesGenre
+#: MSG_LA_PropertiesGenre MSG_LA_AddGameGenre
 msgid "Genre:"
 msgstr "Genre:"
 
 #. ;
-#: MSG_CY_PropertiesGenre0
+#: MSG_CY_PropertiesGenre0 MSG_CY_AddGameGenre0 MSG_UnknownGenre
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -199,14 +217,21 @@ msgid "Tooltypes"
 msgstr "Tooltypes"
 
 #. ;
-#: MSG_BT_PropertiesOK
+#: MSG_BT_PropertiesOK MSG_BT_SettingsSave
 msgid "Save"
 msgstr "Speichern"
 
 #. ;
-#: MSG_BT_PropertiesCancel
+#: MSG_BT_PropertiesCancel MSG_BT_AddGameCancel MSG_BT_SettingsCancel
+#, fuzzy
 msgid "Cancel"
-msgstr "abbrechen"
+msgstr ""
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"abbrechen\n"
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"Abbruch\n"
+"#-#-#-#-#  catalog.po  #-#-#-#-#\n"
+"abbrechen"
 
 #. ;
 #: MSG_WI_GameRepositories
@@ -244,24 +269,9 @@ msgid "Path:"
 msgstr "Pfad:"
 
 #. ;
-#: MSG_LA_AddGameGenre
-msgid "Genre:"
-msgstr "Genre:"
-
-#. ;
-#: MSG_CY_AddGameGenre0
-msgid "Unknown"
-msgstr "Unbekannt"
-
-#. ;
-#: MSG_BT_AddGameOK
+#: MSG_BT_AddGameOK MSG_BT_AboutOK
 msgid "OK"
 msgstr "OK"
-
-#. ;
-#: MSG_BT_AddGameCancel
-msgid "Cancel"
-msgstr "Abbruch"
 
 #. ;
 #: MSG_WI_About
@@ -270,13 +280,14 @@ msgstr "über iGame"
 
 #. ;
 #: MSG_TX_About
-msgid "Emmanuel Vasilakis (mrzammler@mm.st)\n& Contributors\n\n"
-msgstr "Emmanuel Vasilakis (mrzammler@mm.st)\n& Contributors\n\n"
-
-#. ;
-#: MSG_BT_AboutOK
-msgid "OK"
-msgstr "OK"
+msgid ""
+"Emmanuel Vasilakis (mrzammler@mm.st)\n"
+"& Contributors\n"
+"\n"
+msgstr ""
+"Emmanuel Vasilakis (mrzammler@mm.st)\n"
+"& Contributors\n"
+"\n"
 
 #. ;
 #: MSG_WI_Settings
@@ -374,19 +385,9 @@ msgid "Hide side panel"
 msgstr "Seitenleiste ausblenden"
 
 #. ;
-#: MSG_BT_SettingsSave
-msgid "Save"
-msgstr "Speichern"
-
-#. ;
 #: MSG_BT_SettingsUse
 msgid "Use"
 msgstr "benutzen"
-
-#. ;
-#: MSG_BT_SettingsCancel
-msgid "Cancel"
-msgstr "abbrechen"
 
 #. ;
 #: MSG_SelectDir
@@ -402,11 +403,6 @@ msgstr "Startdatei auswählen..."
 #: MSG_TotalNumberOfGames
 msgid "Total %d games."
 msgstr "Insgesamt %d Spiele."
-
-#. ;
-#: MSG_UnknownGenre
-msgid "Unknown"
-msgstr "Unbekannt"
 
 #. ;
 #: MSG_FilterShowAll
@@ -440,8 +436,12 @@ msgstr "ausführen %s..."
 
 #. ;
 #: MSG_ErrorExecutingWhdload
-msgid "Error while executing the selected entry.\nPlease make sure WHDLoad is in your path."
-msgstr "Fehler beim Ausführen des ausgewählten Eintrags.\nstellen Sie sicher, dass sich WHDLoad in Ihrem Pfad befindet."
+msgid ""
+"Error while executing the selected entry.\n"
+"Please make sure WHDLoad is in your path."
+msgstr ""
+"Fehler beim Ausführen des ausgewählten Eintrags.\n"
+"stellen Sie sicher, dass sich WHDLoad in Ihrem Pfad befindet."
 
 #. ;
 #: MSG_ScanningPleaseWait
@@ -544,11 +544,6 @@ msgid "Could not store default picture icon"
 msgstr "Standardicon kann nicht gespeichert werden"
 
 #. ;
-#: MSG_LV_GAMESLIST_TITLE
-msgid "Title"
-msgstr "Titel"
-
-#. ;
 #: MSG_LV_GAMESLIST_YEAR
 msgid "Year"
 msgstr "Jahr"
@@ -562,5 +557,3 @@ msgstr "Spieler"
 #: MSG_LA_UseIgameDataTitle
 msgid "Prefer igame.data"
 msgstr "bevorzuge igame.data"
-
-#. ;
