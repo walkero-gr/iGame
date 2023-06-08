@@ -1,0 +1,575 @@
+#. ## version $VER: igame.catalog 2.3 (08.04.2023)
+#. ## language greek
+#. ## codeset 10
+#. ;
+#. ; $VER: igame.cd 2.4 (06.05.2023)
+#. ;
+#. ;
+#: MSG_AppDescription
+msgid "A front-end to WHDLoad"
+msgstr "Πρόγραμμα χρήσης του WHDLoad"
+
+#. ;
+#: MSG_AppCopyright
+msgid "Emmanuel Vasilakis"
+msgstr "Εμμανουήλ Βασιλάκης"
+
+#. ;
+#: MSG_WI_MainWindow
+msgid "iGame"
+msgstr "iGame"
+
+#. ;
+#: MSG_MNlabel2Actions
+msgid "Actions"
+msgstr "Λειτουργίες"
+
+#. ;
+#: MSG_MNlabelScan
+msgid "Scan Repositories"
+msgstr "Ανάγνωση πηγών"
+
+#. ;
+#: MSG_MNlabelScanChar
+msgid "R_"
+msgstr "R_"
+
+#. ;
+#: MSG_MNMainAddnonWHDLoadgame
+msgid "Add game..."
+msgstr "Προσθήκη παιχνιδιού..."
+
+#. ;
+#: MSG_MNMainAddnonWHDLoadgameChar
+msgid "A_"
+msgstr "A_"
+
+#. ;
+#: MSG_MNMainMenuShowHidehiddenentries
+msgid "Show hidden entries"
+msgstr "Εμφάνιση κρυφών εισαγωγών"
+
+#. ;
+#: MSG_MNMainOpenList
+msgid "Open List..."
+msgstr "Ανάγνωση λίστας..."
+
+#. ;
+#: MSG_MNMainOpenListChar
+msgid "O_"
+msgstr "O_"
+
+#. ;
+#: MSG_MNMainSaveList
+msgid "Save List"
+msgstr "Αποθήκευση λίστας"
+
+#. ;
+#: MSG_MNMainSaveListChar
+msgid "S_"
+msgstr "S_"
+
+#. ;
+#: MSG_MNMainSaveListAs
+msgid "Save List As..."
+msgstr "Αποθήκευση λίστας ως..."
+
+#. ;
+#: MSG_MNMainExportListtoTextfile
+msgid "Export List to Text file..."
+msgstr "Εξαγωγή λίστας σε αρχείο κειμ..."
+
+#. ;
+#: MSG_MNMainAbout
+msgid "About..."
+msgstr "Σχετικά με..."
+
+#. ;
+#: MSG_MNMainQuit
+msgid "Quit"
+msgstr "Έξοδος"
+
+#. ;
+#: MSG_MNMainQuitChar
+msgid "Q_"
+msgstr "Q_"
+
+#. ;
+#: MSG_MNlabel2Game
+msgid "Game"
+msgstr "Παιχνίδι"
+
+#. ;
+#: MSG_MNMainMenuDuplicate
+msgid "Duplicate..."
+msgstr "Αντιγραφή..."
+
+#. ;
+#: MSG_MNMainProperties
+msgid "Properties..."
+msgstr "Στοιχεία..."
+
+#. ;
+#: MSG_MNMainPropertiesChar
+msgid "P_"
+msgstr "P_"
+
+#. ;
+#: MSG_MNMainDelete
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#. ;
+#: MSG_MNMainDeleteChar
+msgid "D_"
+msgstr "D_"
+
+#. ;
+#: MSG_MNlabel2Tools
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#. ;
+#: MSG_MNMainiGameSettings
+msgid "Settings..."
+msgstr "Ρυθμίσεις..."
+
+#. ;
+#: MSG_MNlabel2GameRepositories
+msgid "Repositories..."
+msgstr "Πηγές εισαγωγών..."
+
+#. ;
+#: MSG_MNMainMUISettings
+msgid "MUI Settings..."
+msgstr "Ρυθμίσεις MUI..."
+
+#. ;
+#: MSG_LA_Filter
+msgid "Filter:"
+msgstr "Φίλτρο:"
+
+#. ;
+#: MSG_LV_GenresListTitle
+msgid "Genres"
+msgstr "Είδος"
+
+#. ;
+#: MSG_WI_Properties
+msgid "Game Properties"
+msgstr "Στοιχεία παιχνιδιού"
+
+#. ;
+#: MSG_STR_PropertiesGameTitleTitle
+msgid "Title"
+msgstr "Τίτλος"
+
+#. ;
+#: MSG_LA_PropertiesGenre
+msgid "Genre:"
+msgstr "Είδος:"
+
+#. ;
+#: MSG_CY_PropertiesGenre0
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. ;
+#: MSG_CH_PropertiesFavorite
+msgid "Favourite:"
+msgstr "Αγαπημένο:"
+
+#. ;
+#: MSG_CH_PropertiesHidden
+msgid "Hidden:"
+msgstr "Κρυφό:"
+
+#. ;
+#: MSG_LA_PropertiesTimesPlayed
+msgid "Times Played:"
+msgstr "Φορές που παίχτηκε:"
+
+#. ;
+#: MSG_LA_PropertiesSlavePath
+msgid "Slave Path:"
+msgstr "Κατάλογος του Slave:"
+
+#. ;
+#: MSG_TX_PropertiesTooltypesTitle
+msgid "Tooltypes"
+msgstr "Tooltypes"
+
+#. ;
+#: MSG_BT_PropertiesOK
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#. ;
+#: MSG_BT_PropertiesCancel
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#. ;
+#: MSG_WI_GameRepositories
+msgid "Game Repositories"
+msgstr "Πηγές παιχνιδιών"
+
+#. ;
+#: MSG_BT_AddRepo
+msgid "Add"
+msgstr "Προσθήκη"
+
+#. ;
+#: MSG_BT_RemoveRepo
+msgid "Remove"
+msgstr "Αφαίρεση"
+
+#. ;
+#: MSG_BT_CloseRepoWindow
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#. ;
+#: MSG_WI_AddNonWHDLoad
+msgid "Add a Game"
+msgstr "Προσθήκη παιχνιδιού"
+
+#. ;
+#: MSG_LA_AddGameTitle
+msgid "Title:"
+msgstr "Τίτλος:"
+
+#. ;
+#: MSG_LA_AddGamePath
+msgid "Path:"
+msgstr "Κατάλογος:"
+
+#. ;
+#: MSG_LA_AddGameGenre
+msgid "Genre:"
+msgstr "Είδος:"
+
+#. ;
+#: MSG_CY_AddGameGenre0
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. ;
+#: MSG_BT_AddGameOK
+msgid "OK"
+msgstr "OK"
+
+#. ;
+#: MSG_BT_AddGameCancel
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#. ;
+#: MSG_WI_About
+msgid "About iGame"
+msgstr "Σχετικά με το iGame"
+
+#. ;
+#: MSG_TX_About
+msgid "Emmanuel Vasilakis (mrzammler@mm.st)\n& Contributors\n\n"
+msgstr "Εμμανουήλ Βασιλάκης (mrzammler@mm.st)\n\nκαι Συνεισφέροντες\n\n"
+
+#. ;
+#: MSG_BT_AboutOK
+msgid "OK"
+msgstr "OK"
+
+#. ;
+#: MSG_WI_Settings
+msgid "iGame Settings"
+msgstr "iGame Ρυθμίσεις"
+
+#. ;
+#: MSG_LA_HideScreenshots
+msgid "Hide Screenshots"
+msgstr "Απόκρυψη των εικόνων"
+
+#. ;
+#: MSG_GR_ScreenshotsTitle
+msgid "Screenshots"
+msgstr "Εικόνες"
+
+#. ;
+#: MSG_LA_NoGuiGfx
+msgid "No GuiGfx"
+msgstr "Χωρίς GuiGfx"
+
+#. ;
+#: MSG_LA_ScreenshotSize
+msgid "Screenshot Size:"
+msgstr "Μέγεθος εικόνας:"
+
+#. ;
+#: MSG_CY_ScreenshotSize0
+msgid "160x128"
+msgstr "160x128"
+
+#. ;
+#: MSG_CY_ScreenshotSize1
+msgid "320x256"
+msgstr "320x256"
+
+#. ;
+#: MSG_CY_ScreenshotSize2
+msgid "Custom"
+msgstr "Άλλο"
+
+#. ;
+#: MSG_LA_Width
+msgid "Width"
+msgstr "Μήκος"
+
+#. ;
+#: MSG_LA_Height
+msgid "Height"
+msgstr "Ύψος"
+
+#. ;
+#: MSG_GR_TitlesTitle
+msgid "Titles"
+msgstr "Τίτλος"
+
+#. ;
+#: MSG_RA_TitlesFromTitle
+msgid "Titles From:"
+msgstr "Τίτλοι από:"
+
+#. ;
+#: MSG_RA_TitlesFrom0
+msgid "Slave Contents"
+msgstr "τα περιεχόμενα του Slave"
+
+#. ;
+#: MSG_RA_TitlesFrom1
+msgid "Directories"
+msgstr "τους καταλόγους"
+
+#. ;
+#: MSG_LA_SmartSpaces
+msgid "No Smart Spaces"
+msgstr "Χωρίς έξυπνα κενά"
+
+#. ;
+#: MSG_GR_MiscTitle
+msgid "Misc"
+msgstr "Περισσότερα"
+
+#. ;
+#: MSG_LA_SaveStatsOnExit
+msgid "Save stats on exit"
+msgstr "Αποθήκευση στατιστικών κατά την έξοδο"
+
+#. ;
+#: MSG_LA_FilterUseEnter
+msgid "Use enter to filter"
+msgstr "Χρήση του Enter για φιλτράρισμα"
+
+#. ;
+#: MSG_LA_HideSidepanel
+msgid "Hide side panel"
+msgstr "Απόκρυψη πλαϊνής στήλης"
+
+#. ;
+#: MSG_BT_SettingsSave
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#. ;
+#: MSG_BT_SettingsUse
+msgid "Use"
+msgstr "Χρήση"
+
+#. ;
+#: MSG_BT_SettingsCancel
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#. ;
+#: MSG_SelectDir
+msgid "Select path..."
+msgstr "Επιλογή καταλόγου..."
+
+#. ;
+#: MSG_GameExecutable
+msgid "Select executable..."
+msgstr "Επιλογή εκτελέσιμου..."
+
+#. ;
+#: MSG_TotalNumberOfGames
+msgid "Total %d games."
+msgstr "Συνολικά %d εισαγωγές."
+
+#. ;
+#: MSG_UnknownGenre
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+#. ;
+#: MSG_FilterShowAll
+msgid "--Show All--"
+msgstr "--Εμφάνιση Όλων---"
+
+#. ;
+#: MSG_FilterFavorites
+msgid "--Favorites--"
+msgstr "--Αγαπημένα--"
+
+#. ;
+#: MSG_FilterLastPlayed
+msgid "--Last Played--"
+msgstr "--Τελευταία παιγμένα--"
+
+#. ;
+#: MSG_FilterMostPlayed
+msgid "--Most Played--"
+msgstr "--Περισσότερο παιγμένα--"
+
+#. ;
+#: MSG_FilterNeverPlayed
+msgid "--Never Played--"
+msgstr "--Μη παιγμένα--"
+
+#. ;
+#: MSG_RunningGameTitle
+msgid "Running %s..."
+msgstr "Εκτέλεση %s..."
+
+#. ;
+#: MSG_ErrorExecutingWhdload
+msgid "Error while executing the selected entry.\nPlease make sure WHDLoad is in your path."
+msgstr "Σφάλμα κατά την εκτέλεση.\nΠαρακαλούμε, βεβαιωθείτε ότι το WHDLoad είναι διαθέσιμο."
+
+#. ;
+#: MSG_ScanningPleaseWait
+msgid "Scanning [%s]. Please wait..."
+msgstr "Αναζήτηση στο [%s]. Παρακαλούμε περιμένετε..."
+
+#. ;
+#: MSG_CouldNotCreateReposFile
+msgid "Could not create repos.prefs file!"
+msgstr "Αδύνατη η δημιουργία του repos.prefs αρχείου!"
+
+#. ;
+#: MSG_SelectGameFromList
+msgid "Please select an entry from the list."
+msgstr "Παρακαλούμε, επιλέξτε μια εισαγωγή από την λίστα."
+
+#. ;
+#: MSG_TitleAlreadyExists
+msgid "The title you selected, already exists."
+msgstr "Ο τίτλος που επιλέξατε υπάρχει ήδη."
+
+#. ;
+#: MSG_SavingGamelist
+msgid "Please wait, saving gameslist..."
+msgstr "Παρακαλούμε περιμένετε την αποθήκευση της λίστας..."
+
+#. ;
+#: MSG_FailedOpeningGameslist
+msgid "Could not open gameslist file!"
+msgstr "Αδύνατη η ανάγνωση του αρχείου παιχνιδιών!"
+
+#. ;
+#: MSG_BadTooltype
+msgid "Bad tooltype!"
+msgstr "Λάθος tooltype!"
+
+#. ;
+#: MSG_NoTitleSpecified
+msgid "Please let me know the name of the game..."
+msgstr "Παρακαλώ, πρέπει να γνωρίζω τον τίτλο του παιχνιδιού..."
+
+#. ;
+#: MSG_NoExecutableSpecified
+msgid "Please pick the game executable..."
+msgstr "Παρακαλώ, επιλέξτε το εκτελέσιμο του παιχνιδιού..."
+
+#. ;
+#: MSG_NotEnoughMemory
+msgid "Could not allocate memory! Aborting..."
+msgstr "Αδύνατη η δέσμευση μνήμης! Ακύρωση..."
+
+#. ;
+#: MSG_DirectoryNotFound
+msgid "Game Directory not found!"
+msgstr "Δεν βρέθηκε ο κατάλογος του παιχνιδιού!"
+
+#. ;
+#: MSG_LA_StartWithFavorites
+msgid "Display favorites on start"
+msgstr "Εμφάνιση αγαπημένων κατά την έναρξη"
+
+#. ;
+#: MSG_MNMainOpenCurrentDir
+msgid "Open game folder"
+msgstr "Άνοιγμα φακέλου"
+
+#. ;
+#: MSG_MNMainOpenCurrentDirChar
+msgid "W_"
+msgstr "W_"
+
+#. ;
+#: MSG_slavePathDoesntExist
+msgid "Slave path does not exist!"
+msgstr "Δεν υπάρχει το Slave αρχείο!"
+
+#. ;
+#: MSG_compiledForAboutWin
+msgid "compiled for"
+msgstr "δημιουργήθηκε για"
+
+#. ;
+#: MSG_MNMainPreferences
+msgid "Preferences"
+msgstr "Ρυθμίσεις"
+
+#. ;
+#: MSG_ScanCompletedUpdatingList
+msgid "Scan completed. Updating the list now."
+msgstr "Η αναζήτηση ολοκληρώθηκε. Γίνεται ανανέωση της λίστας τώρα."
+
+#. ;
+#: MSG_LoadingSavedList
+msgid "Loading the saved list. Please wait."
+msgstr "Φόρτωση της αποθηκευμένης λίστας. Παρακαλώ περιμένετε."
+
+#. ;
+#: MSG_ICONPICTURESTORE_FAILED
+msgid "Could not store default picture icon"
+msgstr "Αδύνατη η αποθήκευση της εικόνας στο εικόνιδιο"
+
+#. ;
+#: MSG_LV_GAMESLIST_TITLE
+msgid "Title"
+msgstr "Τίτλος"
+
+#. ;
+#. ; ***NEW***
+#. ;
+#: MSG_LV_GAMESLIST_YEAR
+msgid "Year"
+msgstr "Χρονιά"
+
+#. ;
+#. ; ***NEW***
+#. ;
+#: MSG_LV_GAMESLIST_PLAYERS
+msgid "Players"
+msgstr "Παίκτες"
+
+#. ;
+#. ; ***NEW***
+#. ;
+#: MSG_LA_UseIgameDataTitle
+msgid "Prefer igame.data"
+msgstr "Χρήση του igame.data"
+
+#. ;
+#. ; ***NEW***
+#. ;

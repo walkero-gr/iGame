@@ -1,0 +1,566 @@
+#. ## version $VER: iGame.catalog 1.2 (07.05.2023)
+#. ## codeset 0
+#. ## language français
+#. ; $VER: igame.cd 2.4 (06.05.2023)
+#. ;
+#. ;
+#: MSG_AppDescription
+msgid "A front-end to WHDLoad"
+msgstr "Un client pour WHDLoad"
+
+#. ;
+#: MSG_AppCopyright
+msgid "Emmanuel Vasilakis"
+msgstr "Emmanuel Vasilakis"
+
+#. ;
+#: MSG_WI_MainWindow
+msgid "iGame"
+msgstr "iGame"
+
+#. ;
+#: MSG_MNlabel2Actions
+msgid "Actions"
+msgstr "Actions"
+
+#. ;
+#: MSG_MNlabelScan
+msgid "Scan Repositories"
+msgstr "Scanner les répertoires"
+
+#. ;
+#: MSG_MNlabelScanChar
+msgid "R_"
+msgstr "R_"
+
+#. ;
+#: MSG_MNMainAddnonWHDLoadgame
+msgid "Add game..."
+msgstr "Ajouter un jeu..."
+
+#. ;
+#: MSG_MNMainAddnonWHDLoadgameChar
+msgid "A_"
+msgstr "A_"
+
+#. ;
+#: MSG_MNMainMenuShowHidehiddenentries
+msgid "Show hidden entries"
+msgstr "Afficher les saisies cachées"
+
+#. ;
+#: MSG_MNMainOpenList
+msgid "Open List..."
+msgstr "Ouvrir liste..."
+
+#. ;
+#: MSG_MNMainOpenListChar
+msgid "O_"
+msgstr "O_"
+
+#. ;
+#: MSG_MNMainSaveList
+msgid "Save List"
+msgstr "Sauvegarder liste"
+
+#. ;
+#: MSG_MNMainSaveListChar
+msgid "S_"
+msgstr "S_"
+
+#. ;
+#: MSG_MNMainSaveListAs
+msgid "Save List As..."
+msgstr "Sauvegarder liste comme..."
+
+#. ;
+#: MSG_MNMainExportListtoTextfile
+msgid "Export List to Text file..."
+msgstr "Exporter liste vers fichier texte..."
+
+#. ;
+#: MSG_MNMainAbout
+msgid "About..."
+msgstr "A propos..."
+
+#. ;
+#: MSG_MNMainQuit
+msgid "Quit"
+msgstr "Quitter"
+
+#. ;
+#: MSG_MNMainQuitChar
+msgid "Q_"
+msgstr "Q_"
+
+#. ;
+#: MSG_MNlabel2Game
+msgid "Game"
+msgstr "Jeu"
+
+#. ;
+#: MSG_MNMainMenuDuplicate
+msgid "Duplicate..."
+msgstr "Dupliquer..."
+
+#. ;
+#: MSG_MNMainProperties
+msgid "Properties..."
+msgstr "Propriétés..."
+
+#. ;
+#: MSG_MNMainPropertiesChar
+msgid "P_"
+msgstr "P_"
+
+#. ;
+#: MSG_MNMainDelete
+msgid "Delete"
+msgstr "Supprimer"
+
+#. ;
+#: MSG_MNMainDeleteChar
+msgid "D_"
+msgstr "D_"
+
+#. ;
+#: MSG_MNlabel2Tools
+msgid "Settings"
+msgstr "Paramétrages"
+
+#. ;
+#: MSG_MNMainiGameSettings
+msgid "Settings..."
+msgstr "Paramétrages..."
+
+#. ;
+#: MSG_MNlabel2GameRepositories
+msgid "Repositories..."
+msgstr "Répertoires..."
+
+#. ;
+#: MSG_MNMainMUISettings
+msgid "MUI Settings..."
+msgstr "Paramétrages MUI..."
+
+#. ;
+#: MSG_LA_Filter
+msgid "Filter:"
+msgstr "Filtre :"
+
+#. ;
+#: MSG_LV_GenresListTitle
+msgid "Genres"
+msgstr "Types"
+
+#. ;
+#: MSG_WI_Properties
+msgid "Game Properties"
+msgstr "Propriétés du jeu"
+
+#. ;
+#: MSG_STR_PropertiesGameTitleTitle
+msgid "Title"
+msgstr "Titre"
+
+#. ;
+#: MSG_LA_PropertiesGenre
+msgid "Genre:"
+msgstr "Type :"
+
+#. ;
+#: MSG_CY_PropertiesGenre0
+msgid "Unknown"
+msgstr "Inconnu"
+
+#. ;
+#: MSG_CH_PropertiesFavorite
+msgid "Favourite:"
+msgstr "Favori :"
+
+#. ;
+#: MSG_CH_PropertiesHidden
+msgid "Hidden:"
+msgstr "Caché :"
+
+#. ;
+#: MSG_LA_PropertiesTimesPlayed
+msgid "Times Played:"
+msgstr "Temps joué :"
+
+#. ;
+#: MSG_LA_PropertiesSlavePath
+msgid "Slave Path:"
+msgstr "Chemin du fichier Slave :"
+
+#. ;
+#: MSG_TX_PropertiesTooltypesTitle
+msgid "Tooltypes"
+msgstr "Types d'outils"
+
+#. ;
+#: MSG_BT_PropertiesOK
+msgid "Save"
+msgstr "D'accord"
+
+#. ;
+#: MSG_BT_PropertiesCancel
+msgid "Cancel"
+msgstr "Annuler"
+
+#. ;
+#: MSG_WI_GameRepositories
+msgid "Game Repositories"
+msgstr "Répertoires des jeux"
+
+#. ;
+#: MSG_BT_AddRepo
+msgid "Add"
+msgstr "Ajouter"
+
+#. ;
+#: MSG_BT_RemoveRepo
+msgid "Remove"
+msgstr "Effacer"
+
+#. ;
+#: MSG_BT_CloseRepoWindow
+msgid "Close"
+msgstr "Fermer"
+
+#. ;
+#: MSG_WI_AddNonWHDLoad
+msgid "Add a Game"
+msgstr "Ajouter un jeu"
+
+#. ;
+#: MSG_LA_AddGameTitle
+msgid "Title:"
+msgstr "Titre :"
+
+#. ;
+#: MSG_LA_AddGamePath
+msgid "Path:"
+msgstr "Chemin :"
+
+#. ;
+#: MSG_LA_AddGameGenre
+msgid "Genre:"
+msgstr "Type :"
+
+#. ;
+#: MSG_CY_AddGameGenre0
+msgid "Unknown"
+msgstr "Inconnu"
+
+#. ;
+#: MSG_BT_AddGameOK
+msgid "OK"
+msgstr "D'accord"
+
+#. ;
+#: MSG_BT_AddGameCancel
+msgid "Cancel"
+msgstr "Annuler"
+
+#. ;
+#: MSG_WI_About
+msgid "About iGame"
+msgstr "A propos d'iGame"
+
+#. ;
+#: MSG_TX_About
+msgid "Emmanuel Vasilakis (mrzammler@mm.st)\n& Contributors\n\n"
+msgstr "Emmanuel Vasilakis (mrzammler@mm.st)\n\nContributeurs:\nDimitris Panokostas (midwan@gmail.com)\nGeorge Sokianos (walkero@gmail.com)\nChris Charabaruk (chris+igame@charabaruk.com)\nJavier R. Santurde \(tolkien)\nAmiguy (a french amigan)\n\n"
+
+#. ;
+#: MSG_BT_AboutOK
+msgid "OK"
+msgstr "D'accord"
+
+#. ;
+#: MSG_WI_Settings
+msgid "iGame Settings"
+msgstr "Paramétrages d'iGame"
+
+#. ;
+#: MSG_LA_HideScreenshots
+msgid "Hide Screenshots"
+msgstr "Cacher les impressions d'écran"
+
+#. ;
+#: MSG_GR_ScreenshotsTitle
+msgid "Screenshots"
+msgstr "Impressions d'écran"
+
+#. ;
+#: MSG_LA_NoGuiGfx
+msgid "No GuiGfx"
+msgstr "Pas de vignettes"
+
+#. ;
+#: MSG_LA_ScreenshotSize
+msgid "Screenshot Size:"
+msgstr "Taille des vignettes :"
+
+#. ;
+#: MSG_CY_ScreenshotSize0
+msgid "160x128"
+msgstr "168x128"
+
+#. ;
+#: MSG_CY_ScreenshotSize1
+msgid "320x256"
+msgstr "320x256"
+
+#. ;
+#: MSG_CY_ScreenshotSize2
+msgid "Custom"
+msgstr "Spécifique"
+
+#. ;
+#: MSG_LA_Width
+msgid "Width"
+msgstr "Largeur"
+
+#. ;
+#: MSG_LA_Height
+msgid "Height"
+msgstr "Hauteur"
+
+#. ;
+#: MSG_GR_TitlesTitle
+msgid "Titles"
+msgstr "Titres"
+
+#. ;
+#: MSG_RA_TitlesFromTitle
+msgid "Titles From:"
+msgstr "Titres repris de :"
+
+#. ;
+#: MSG_RA_TitlesFrom0
+msgid "Slave Contents"
+msgstr "Nom du Slave"
+
+#. ;
+#: MSG_RA_TitlesFrom1
+msgid "Directories"
+msgstr "Répertoires"
+
+#. ;
+#: MSG_LA_SmartSpaces
+msgid "No Smart Spaces"
+msgstr "Pas d'espace auto"
+
+#. ;
+#: MSG_GR_MiscTitle
+msgid "Misc"
+msgstr "Divers"
+
+#. ;
+#: MSG_LA_SaveStatsOnExit
+msgid "Save stats on exit"
+msgstr "Sauvegarder stats en sortie"
+
+#. ;
+#: MSG_LA_FilterUseEnter
+msgid "Use enter to filter"
+msgstr "Touche [Entrée] pour filtrer"
+
+#. ;
+#: MSG_LA_HideSidepanel
+msgid "Hide side panel"
+msgstr "Cacher le panneau latéral"
+
+#. ;
+#: MSG_BT_SettingsSave
+msgid "Save"
+msgstr "Sauvegarder"
+
+#. ;
+#: MSG_BT_SettingsUse
+msgid "Use"
+msgstr "Utiliser"
+
+#. ;
+#: MSG_BT_SettingsCancel
+msgid "Cancel"
+msgstr "Annuler"
+
+#. ;
+#: MSG_SelectDir
+msgid "Select path..."
+msgstr "Choisir un répertoire..."
+
+#. ;
+#: MSG_GameExecutable
+msgid "Select executable..."
+msgstr "Choisir l'exécutable du jeu..."
+
+#. ;
+#: MSG_TotalNumberOfGames
+msgid "Total %d games."
+msgstr "%d jeux au total."
+
+#. ;
+#: MSG_UnknownGenre
+msgid "Unknown"
+msgstr "Inconnu"
+
+#. ;
+#: MSG_FilterShowAll
+msgid "--Show All--"
+msgstr "--Afficher tout--"
+
+#. ;
+#: MSG_FilterFavorites
+msgid "--Favorites--"
+msgstr "--Favoris--"
+
+#. ;
+#: MSG_FilterLastPlayed
+msgid "--Last Played--"
+msgstr "--Dernier joué--"
+
+#. ;
+#: MSG_FilterMostPlayed
+msgid "--Most Played--"
+msgstr "--Souvent joués--"
+
+#. ;
+#: MSG_FilterNeverPlayed
+msgid "--Never Played--"
+msgstr "--Jamais joués--"
+
+#. ;
+#: MSG_RunningGameTitle
+msgid "Running %s..."
+msgstr "%s en cours..."
+
+#. ;
+#: MSG_ErrorExecutingWhdload
+msgid "Error while executing the selected entry.\nPlease make sure WHDLoad is in your path."
+msgstr "Erreur durant l'exécution de WHDLoad ou du jeu.\nVeuillez vérifier que WHDLoad figure bien dans le chemin."
+
+#. ;
+#: MSG_ScanningPleaseWait
+msgid "Scanning [%s]. Please wait..."
+msgstr "Scanne [%s]. Veuillez patienter..."
+
+#. ;
+#: MSG_CouldNotCreateReposFile
+msgid "Could not create repos.prefs file!"
+msgstr "Impossible de créer le fichier repos.prefs !"
+
+#. ;
+#: MSG_SelectGameFromList
+msgid "Please select an entry from the list."
+msgstr "Veuillez choisir un jeu figurant dans la liste."
+
+#. ;
+#: MSG_TitleAlreadyExists
+msgid "The title you selected, already exists."
+msgstr "Le titre choisi existe déjà."
+
+#. ;
+#: MSG_SavingGamelist
+msgid "Please wait, saving gameslist..."
+msgstr "Veuillez patienter. Sauvegarde de la liste des jeux..."
+
+#. ;
+#: MSG_FailedOpeningGameslist
+msgid "Could not open gameslist file!"
+msgstr "Impossible d'ouvrir le fichier gameslist !"
+
+#. ;
+#: MSG_BadTooltype
+msgid "Bad tooltype!"
+msgstr "Tooltype incorrect !"
+
+#. ;
+#: MSG_NoTitleSpecified
+msgid "Please let me know the name of the game..."
+msgstr "Veuillez indiquer le nom du jeu..."
+
+#. ;
+#: MSG_NoExecutableSpecified
+msgid "Please pick the game executable..."
+msgstr "Veuillez sélectionner l'exécutable du jeu..."
+
+#. ;
+#: MSG_NotEnoughMemory
+msgid "Could not allocate memory! Aborting..."
+msgstr "Impossible d'allouer de la mémoire ! Action interrompue..."
+
+#. ;
+#: MSG_DirectoryNotFound
+msgid "Game Directory not found!"
+msgstr "Répertoire de jeux introuvable !"
+
+#. ;
+#: MSG_LA_StartWithFavorites
+msgid "Display favorites on start"
+msgstr "Afficher les favoris au départ"
+
+#. ;
+#: MSG_MNMainOpenCurrentDir
+msgid "Open game folder"
+msgstr "Ouvrir le répertoire du jeu"
+
+#. ;
+#: MSG_MNMainOpenCurrentDirChar
+msgid "W_"
+msgstr "W_"
+
+#. ;
+#: MSG_slavePathDoesntExist
+msgid "Slave path does not exist!"
+msgstr "Chemin du Slave inexistant !"
+
+#. ;
+#: MSG_compiledForAboutWin
+msgid "compiled for"
+msgstr "compilé pour"
+
+#. ;
+#: MSG_MNMainPreferences
+msgid "Preferences"
+msgstr "Configuration"
+
+#. ;
+#: MSG_ScanCompletedUpdatingList
+msgid "Scan completed. Updating the list now."
+msgstr "Scan terminé. Mise à jour de la liste en cours..."
+
+#. ;
+#: MSG_LoadingSavedList
+msgid "Loading the saved list. Please wait."
+msgstr "Chargement de la liste sauvegardée. Veuillez patienter."
+
+#. ;
+#: MSG_ICONPICTURESTORE_FAILED
+msgid "Could not store default picture icon"
+msgstr "Sauvegarde de l'icône par défaut impossible"
+
+#. ;
+#: MSG_LV_GAMESLIST_TITLE
+msgid "Title"
+msgstr "Titre"
+
+#. ;
+#: MSG_LV_GAMESLIST_YEAR
+msgid "Year"
+msgstr "Année"
+
+#. ;
+#: MSG_LV_GAMESLIST_PLAYERS
+msgid "Players"
+msgstr "Joueurs"
+
+#. ;
+#: MSG_LA_UseIgameDataTitle
+msgid "Prefer igame.data"
+msgstr "igame.data préféré"
+
+#. ;
