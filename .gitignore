@@ -10,3 +10,4 @@ send_to_emul
 catalogs/*/iGame.catalog
 .vscode
 .idea
+*.mo
