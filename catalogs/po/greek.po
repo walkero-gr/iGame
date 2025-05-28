@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $VER: igame.catalog 2.3 (08.04.2023)\n"
 "Report-Msgid-Bugs-To: http://URL/\n"
-"POT-Creation-Date: 2025-05-28 21:17+0000\n"
+"POT-Creation-Date: 2025-05-28 21:23+0000\n"
 "PO-Revision-Date: 2025-05-28 18:50+0000\n"
 "Last-Translator: George Sokianos <walkero@gmail.com>\n"
 "Language-Team: Greek <https://translate.igame.rocks/projects/igame/igame-app/"
@@ -539,6 +539,14 @@ msgstr "Κρυφό:"
 
 msgctxt "MSG_GR_LinksTitle (//)"
 msgid "Links"
+msgstr ""
+
+msgctxt "MSG_ItemExecutableOrSlave (//)"
+msgid "Select the slave or the executable file"
+msgstr ""
+
+msgctxt "MSG_DummyAddition (//)"
+msgid "Dummy addition 1"
 msgstr ""
 
 #~ msgctxt "MSG_STR_PropertiesGameTitleTitle (//)"
