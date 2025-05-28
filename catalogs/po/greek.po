@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: $VER: igame.catalog 2.3 (08.04.2023)\n"
 "Report-Msgid-Bugs-To: http://URL/\n"
 "POT-Creation-Date: 2025-05-28 21:23+0000\n"
-"PO-Revision-Date: 2025-05-28 18:50+0000\n"
+"PO-Revision-Date: 2025-05-28 21:45+0000\n"
 "Last-Translator: George Sokianos <walkero@gmail.com>\n"
 "Language-Team: Greek <https://translate.igame.rocks/projects/igame/igame-app/"
 "el/>\n"
@@ -149,9 +149,6 @@ msgctxt "MSG_WI_Properties (//)"
 msgid "Game Properties"
 msgstr "Στοιχεία παιχνιδιού"
 
-#, fuzzy
-#| msgctxt "MSG_LA_AddGameTitle (//)"
-#| msgid "Title:"
 msgctxt "MSG_STR_PropertiesGameTitleTitle (//)"
 msgid "Title:"
 msgstr "Τίτλος:"
@@ -362,9 +359,6 @@ msgctxt "MSG_FilterShowAll (//)"
 msgid "--Show All--"
 msgstr "--Εμφάνιση Όλων---"
 
-#, fuzzy
-#| msgctxt "MSG_FilterFavorites (//)"
-#| msgid "--Favorites--"
 msgctxt "MSG_FilterFavorites (//)"
 msgid "--Favourites--"
 msgstr "--Αγαπημένα--"
@@ -437,9 +431,6 @@ msgctxt "MSG_DirectoryNotFound (//)"
 msgid "Game Directory not found!"
 msgstr "Δεν βρέθηκε ο κατάλογος του παιχνιδιού!"
 
-#, fuzzy
-#| msgctxt "MSG_LA_StartWithFavorites (//)"
-#| msgid "Display favorites on start"
 msgctxt "MSG_LA_StartWithFavorites (//)"
 msgid "Display favourites on start"
 msgstr "Εμφάνιση αγαπημένων κατά την έναρξη"
@@ -494,64 +485,55 @@ msgstr "Χρήση του igame.data"
 
 msgctxt "MSG_WI_Information (//)"
 msgid "Item information"
-msgstr ""
+msgstr "Πληροφορίες αντικειμένου"
 
 msgctxt "MSG_MNMainIformation (//)"
 msgid "Information..."
-msgstr ""
+msgstr "Πληροφορίες..."
 
 msgctxt "MSG_LA_ReleaseYear (//)"
 msgid "Release year:"
-msgstr ""
+msgstr "Έτος κυκλοφορίας:"
 
 msgctxt "MSG_LA_ReleasedBy (//)"
 msgid "Released by:"
-msgstr ""
+msgstr "Κυκλοφόρησε από:"
 
 msgctxt "MSG_LA_Chipset (//)"
 msgid "Chipset:"
-msgstr ""
+msgstr "Chip Γραφικών:"
 
 msgctxt "MSG_LA_NoOfPlayers (//)"
 msgid "No of players:"
-msgstr ""
+msgstr "Αριθμός παικτών:"
 
-#, fuzzy
-#| msgctxt "MSG_LA_PropertiesTimesPlayed (//)"
-#| msgid "Times Played:"
 msgctxt "MSG_LA_TimesPlayed (//)"
 msgid "Times played:"
 msgstr "Φορές που παίχτηκε:"
 
-#, fuzzy
-#| msgctxt "MSG_CH_PropertiesFavorite (//)"
-#| msgid "Favourite:"
 msgctxt "MSG_LA_Favourite (//)"
 msgid "Favourite"
-msgstr "Αγαπημένο:"
+msgstr "Αγαπημένο"
 
-#, fuzzy
-#| msgctxt "MSG_CH_PropertiesHidden (//)"
-#| msgid "Hidden:"
 msgctxt "MSG_LA_Hidden (//)"
 msgid "Hidden"
-msgstr "Κρυφό:"
+msgstr "Κρυφό"
 
 msgctxt "MSG_GR_LinksTitle (//)"
 msgid "Links"
-msgstr ""
+msgstr "Σύνδεσμοι"
 
 msgctxt "MSG_ItemExecutableOrSlave (//)"
 msgid "Select the slave or the executable file"
-msgstr ""
+msgstr "Επιλέξτε το slave ή το εκτελέσιμο αρχείο"
 
 msgctxt "MSG_DummyAddition (//)"
 msgid "Dummy addition 1"
-msgstr ""
+msgstr "προσωρινό 1"
 
 msgctxt "MSG_DummyAddition2 (//)"
 msgid "Dummy addition 2"
-msgstr ""
+msgstr "προσωρινό 2"
 
 #~ msgctxt "MSG_STR_PropertiesGameTitleTitle (//)"
 #~ msgid "Title"
