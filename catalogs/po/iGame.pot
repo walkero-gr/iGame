@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://URL/\n"
-"POT-Creation-Date: 2023-06-08 21:26+0000\n"
+"POT-Creation-Date: 2025-05-28 18:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,7 +145,7 @@ msgid "Game Properties"
 msgstr ""
 
 msgctxt "MSG_STR_PropertiesGameTitleTitle (//)"
-msgid "Title"
+msgid "Title:"
 msgstr ""
 
 msgctxt "MSG_LA_PropertiesGenre (//)"
@@ -349,7 +349,7 @@ msgid "--Show All--"
 msgstr ""
 
 msgctxt "MSG_FilterFavorites (//)"
-msgid "--Favorites--"
+msgid "--Favourites--"
 msgstr ""
 
 msgctxt "MSG_FilterLastPlayed (//)"
@@ -417,7 +417,7 @@ msgid "Game Directory not found!"
 msgstr ""
 
 msgctxt "MSG_LA_StartWithFavorites (//)"
-msgid "Display favorites on start"
+msgid "Display favourites on start"
 msgstr ""
 
 msgctxt "MSG_MNMainOpenCurrentDir (//)"
@@ -466,4 +466,44 @@ msgstr ""
 
 msgctxt "MSG_LA_UseIgameDataTitle (//)"
 msgid "Prefer igame.data"
+msgstr ""
+
+msgctxt "MSG_WI_Information (//)"
+msgid "Item information"
+msgstr ""
+
+msgctxt "MSG_MNMainIformation (//)"
+msgid "Information..."
+msgstr ""
+
+msgctxt "MSG_LA_ReleaseYear (//)"
+msgid "Release year:"
+msgstr ""
+
+msgctxt "MSG_LA_ReleasedBy (//)"
+msgid "Released by:"
+msgstr ""
+
+msgctxt "MSG_LA_Chipset (//)"
+msgid "Chipset:"
+msgstr ""
+
+msgctxt "MSG_LA_NoOfPlayers (//)"
+msgid "No of players:"
+msgstr ""
+
+msgctxt "MSG_LA_TimesPlayed (//)"
+msgid "Times played:"
+msgstr ""
+
+msgctxt "MSG_LA_Favourite (//)"
+msgid "Favourite"
+msgstr ""
+
+msgctxt "MSG_LA_Hidden (//)"
+msgid "Hidden"
+msgstr ""
+
+msgctxt "MSG_GR_LinksTitle (//)"
+msgid "Links"
 msgstr ""
