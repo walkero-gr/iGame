@@ -373,3 +373,6 @@ Select the slave or the executable file
 MSG_DummyAddition (//)
 Dummy addition 1
 ;
+MSG_DummyAddition2 (//)
+Dummy addition 2
+;

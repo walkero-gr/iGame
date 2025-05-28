@@ -515,3 +515,7 @@ msgstr ""
 msgctxt "MSG_DummyAddition (//)"
 msgid "Dummy addition 1"
 msgstr ""
+
+msgctxt "MSG_DummyAddition2 (//)"
+msgid "Dummy addition 2"
+msgstr ""
