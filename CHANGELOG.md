@@ -1,4 +1,9 @@
 ## iGame VERSION_TAG - [RELEASE_DATE]
+### Fixed
+- Fixed the screenshots being visible for the selected entry on MorphOS (#255)
+- Fixed duplicate records in list when the repository was scanned repeatedly, and the igame.data files were used. This was surfaced only on MorphOS, but could be a potential problem on other systems as well (#265)
+
+## iGame 2.6.0 - [2025-06-14]
 ### Added
 - By changing the Genre select box to a PopupString, it is now possible to edit the Genre title and create new ones, which will be added to the Genre lists
 - Added Portuguese language

@@ -1543,6 +1543,10 @@ BOOL checkImageDatatype(STRPTR filename)
 
 	if((lock = Lock(filename, SHARED_LOCK)))
 	{
+#if defined(__morphos__)
+		UnLock(lock);
+		return TRUE; // MorphOS includes the ilbm datatype by default
+#endif
 		if((dtn = ObtainDataType(DTST_FILE, (APTR)lock, TAG_END)))
 		{
 			const struct DataTypeHeader *dth = dtn->dtn_Header;
