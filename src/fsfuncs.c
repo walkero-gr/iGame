@@ -678,59 +678,42 @@ void getIGameDataInfo(char *igameDataPath, slavesList *node)
 	{
 		int lineSize = 64;
 		char *line = malloc(lineSize * sizeof(char));
-		while (FGets(fpigamedata, line, lineSize) != NULL)
+		while (FGets(fpigamedata, line, lineSize))
 		{
-			char **tokens = str_split(line, '=');
-			if (tokens)
+			char *key = strtok(line, "=");
+			char *value = strtok(NULL, "\n");
+
+			if (key && value && strlen(value) > 0)
 			{
-				if (tokens[1] != NULL)
+				if(current_settings->useIgameDataTitle && !strcmp(key, "title"))
 				{
-					int tokenValueLen = strlen(tokens[1]);
-					if (tokens[1][tokenValueLen - 1] == '\n')
-					{
-						tokens[1][tokenValueLen - 1] = '\0';
-					}
-					else
-					{
-						tokens[1][tokenValueLen] = '\0';
-					}
-
-					if(current_settings->useIgameDataTitle && !strcmp(tokens[0], "title"))
-					{
-						strncpy(node->title, tokens[1], MAX_SLAVE_TITLE_SIZE);
-					}
-
-					if(!strcmp(tokens[0], "chipset"))
-					{
-						strncpy(node->chipset, tokens[1], MAX_CHIPSET_SIZE);
-					}
-
-					if(!strcmp(tokens[0], "genre"))
-					{
-						strncpy(node->genre, tokens[1], MAX_GENRE_NAME_SIZE);
-					}
-
-					if(!strcmp(tokens[0], "year") && isNumeric(tokens[1]))
-					{
-						node->year=atoi(tokens[1]);
-					}
-
-					if(!strcmp(tokens[0], "players") && isNumeric(tokens[1]))
-					{
-						node->players=atoi(tokens[1]);
-					}
-
-					if(!strcmp(tokens[0], "exe") && !isStringEmpty(tokens[1]) && !strcasestr(tokens[1], ".slave"))
-					{
-						strncpy(node->path, tokens[1], MAX_PATH_SIZE);
-					}
+					strncpy(node->title, value, MAX_SLAVE_TITLE_SIZE);
 				}
-				int i;
-				for (i = 0; *(tokens + i); i++)
+
+				if(!strcmp(key, "chipset"))
 				{
-					free(*(tokens + i));
+					strncpy(node->chipset, value, MAX_CHIPSET_SIZE);
 				}
-				free(tokens);
+
+				if(!strcmp(key, "genre"))
+				{
+					strncpy(node->genre, value, MAX_GENRE_NAME_SIZE);
+				}
+
+				if(!strcmp(key, "year") && isNumeric(value))
+				{
+					node->year=atoi(value);
+				}
+
+				if(!strcmp(key, "players") && isNumeric(value))
+				{
+					node->players=atoi(value);
+				}
+
+				if(!strcmp(key, "exe") && !isStringEmpty(value) && !strcasestr(value, ".slave"))
+				{
+					strncpy(node->path, value, MAX_PATH_SIZE);
+				}
 			}
 		}
 

@@ -857,6 +857,7 @@ static BOOL examineFolder(char *path)
 						node->deleted = 0;
 						node->year = 0;
 						node->players = 0;
+						node->path[0] = '\0';
 
 						getIGameDataInfo(igameDataPath, node);
 						free(igameDataPath);
@@ -917,7 +918,7 @@ static BOOL examineFolder(char *path)
 							node->instance = 0;
 							node->title[0] = '\0';
 							node->genre[0] = '\0';
-							sprintf(node->genre,"Unknown");
+							sprintf(node->genre, "Unknown");
 							node->user_title[0] = '\0';
 							node->chipset[0] = '\0';
 							node->times_played = 0;
@@ -928,6 +929,7 @@ static BOOL examineFolder(char *path)
 							node->deleted = 0;
 							node->year = 0;
 							node->players = 0;
+							node->path[0] = '\0';
 
 							getFullPath(buf, buf);
 							strncpy(node->path, buf, sizeof(node->path));
@@ -998,6 +1000,7 @@ static BOOL examineFolder(char *path)
 									node->deleted = 0;
 									node->year = 0;
 									node->players = 0;
+									node->path[0] = '\0';
 
 									getIGameDataInfo(igameDataPath, node);
 
@@ -1201,12 +1204,14 @@ static void get_screenshot_path(char *game_title, char *result)
 
 		// Return the slave icon from the game folder, if exists
 		// TODO: Check if this item is a slave. If not don't use the substring
+#if !defined(__morphos__)
 		snprintf(result, sizeof(char) * MAX_PATH_SIZE, "%s.info", substring(existingNode->path, 0, -6));
 		if(checkImageDatatype(result))
 		{
 			free(buf);
 			return;
 		}
+#endif
 
 		// Return the default image from iGame folder, if exists
 		if(check_path_exists(DEFAULT_SCREENSHOT_FILE))
@@ -1725,6 +1730,7 @@ void non_whdload_ok(void)
 	node->deleted = 0;
 	node->year = 0;
 	node->players = 0;
+	node->path[0] = '\0';
 
 	get(app->PA_AddGame, MUIA_String_Contents, &path);
 	getFullPath(path, node->path);
