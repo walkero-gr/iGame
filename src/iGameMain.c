@@ -46,6 +46,7 @@
 #include "iGameExtern.h"
 #include "fsfuncs.h"
 #include "funcs.h"
+#include "sqldb.h"
 #include "iGameGUI.h"
 
 /* Increase stack size */
@@ -134,6 +135,24 @@ int main(int argc, char **argv)
 	app = CreateApp();
 	if (app)
 	{
+		// Initialize database path first
+		if (!initializeDBPath()) {
+			printf("ERROR: Failed to initialize database path\n");
+			cleanUp();
+			return RETURN_ERROR;
+		}
+		
+		printf("[main] Checking if database exists at: %s\n", getDBPath());
+		if (!check_path_exists((STRPTR)getDBPath()))
+		{
+			printf("[main] Database does not exist, creating...\n");
+			if (!createDB()) {
+				printf("[main] ERROR: Failed to create database\n");
+			}
+		}
+		else {
+			printf("[main] Database file already exists\n");
+		}
 		app_start();
 	}
 	else

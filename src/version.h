@@ -25,7 +25,7 @@
 #endif
 
 #ifndef MINOR_VERS
-#define MINOR_VERS 4
+#define MINOR_VERS 6
 #endif
 
 #ifndef PATCH_VERS
@@ -33,10 +33,10 @@
 #endif
 
 #ifndef RELEASE_DATE
-#define RELEASE_DATE "2025"
+#define RELEASE_DATE "2026"
 #endif
 
-#define COPY_END_YEAR 2025
+#define COPY_END_YEAR ((__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0'))
 
 #ifndef VERSION
 #define VERSION "$VER: iGame " STR(MAJOR_VERS) "." STR(MINOR_VERS) "." STR(PATCH_VERS) " (" STR(RELEASE_DATE) ")"

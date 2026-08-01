@@ -405,7 +405,11 @@ void app_start(void)
 		BENCH_DECLARE;
 		BENCH_START();
 		slavesListLoadFromCSV(csvFilename);
-		BENCH_END("CSV load");
+		BENCH_END("Gamelist load from CSV file");
+
+		BENCH_START();
+		slavesListLoadFromDB();
+		BENCH_END("Gamelist load from sqlite3 DB");
 	}
 
 	populateGenresLists(); // This calls the filter_change()
@@ -746,6 +750,7 @@ static void showSlavesList(void)
 
 			cnt++;
 nextItem:
+;
 		}
 
 		currPtr = currPtr->next;
@@ -1416,7 +1421,11 @@ void save_list(void)
 	BENCH_DECLARE;
 	BENCH_START();
 	slavesListSaveToCSV(DEFAULT_GAMESLIST_FILE);
-	BENCH_END("CSV save");
+	BENCH_END("save_list() to CSV file");
+
+	BENCH_START();
+	slavesListSaveToDB(DEFAULT_GAMESLIST_FILE);
+	BENCH_END("save_list() to sqlite3 DB");
 }
 
 // TODO: Make this work

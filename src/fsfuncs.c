@@ -41,6 +41,9 @@
 #endif
 #include <libraries/asl.h>
 
+#include <sqlite3.h>
+#include "sqldb.h"
+
 /* ANSI C */
 #include <stdio.h>
 #include <string.h>
@@ -138,11 +141,13 @@ void getFullPath(const char *path, char *result)
 BOOL check_path_exists(char *path)
 {
 	const BPTR lock = Lock(path, SHARED_LOCK);
+	printf("[check_path_exists] Checking path: %s\n", path);
 	if (lock) {
 		UnLock(lock);
+		printf("[check_path_exists] Path exists: %s\n", path);
 		return TRUE;
 	}
-
+	printf("[check_path_exists] Path does not exist: %s\n", path);
 	return FALSE;
 }
 
@@ -273,6 +278,45 @@ void slavesListLoadFromCSV(char *filename)
 	free(lineBuf);
 }
 
+
+int getItems(void *unused, int cntCols, char **fields, char **colNames)
+{
+
+	// item_games = (games_list *)calloc(1, sizeof(games_list));
+	// item_games->next = NULL;
+
+	// // item_games->index = 0;
+	// item_games->exists = 0;
+	// item_games->deleted = 0;
+	// item_games->hidden = 0;
+
+	// item_games->index = atoi(fields[0]);
+	// strcpy(item_games->title, fields[1]);
+	// strcpy(item_games->genre, fields[2]);
+	// strcpy(item_games->path, fields[3]);
+	// item_games->favorite = atoi(fields[4]);
+	// item_games->times_played = atoi(fields[5]);
+	// item_games->last_played = atoi(fields[6]);
+	// item_games->hidden = atoi(fields[7]);
+
+	// if (games)
+	// {
+	// 	item_games->next = games;
+	// 	games = item_games;
+	// }
+	// else
+	// {
+	// 	games = item_games;
+	// }
+
+	return 0;
+}
+
+void slavesListLoadFromDB(void)
+{
+	sqlGetItems(getItems);
+}
+
 /* Write a decimal integer into buf without format-string parsing overhead */
 static char *csv_append_int(char *p, int val)
 {
@@ -340,6 +384,45 @@ void slavesListSaveToCSV(const char *filename)
 
 	fclose(fpgames);
 	free(iobuf);
+}
+
+void slavesListSaveToDB(const char *filename)
+{
+	sqlite3 *db = sqlDBOpen();
+	set(app->TX_Status, MUIA_Text_Contents, (const char*)GetMBString(MSG_SavingGamelist));
+
+	// Start transaction for bulk insert
+	if (!sqlBeginTransaction(db)) {
+		printf("Failed to start transaction\n");
+		sqlite3_close(db);
+		return;
+	}
+
+	slavesList *currPtr = getSlavesListHead();
+	while (currPtr != NULL)
+	{
+		if (!sqlAddItem(
+			currPtr->title, currPtr->genre, currPtr->path,
+			currPtr->favourite, currPtr->times_played, currPtr->last_played, currPtr->hidden,
+			currPtr->deleted, currPtr->user_title, currPtr->year, currPtr->players, currPtr->chipset,
+			db
+		)) {
+			printf("Error inserting item, rolling back...\n");
+			sqlRollbackTransaction(db);
+			sqlite3_close(db);
+			return;
+		}
+		currPtr = currPtr->next;
+	}
+
+	// Commit all changes
+	if (!sqlCommitTransaction(db)) {
+		printf("Failed to commit transaction\n");
+		sqlite3_close(db);
+		return;
+	}
+
+	sqlite3_close(db);
 }
 
 /*
@@ -466,10 +549,6 @@ char *get_executable_name(int argc, char **argv)
 // This reveals the item window on Workbench
 void open_current_dir(void)
 {
-	int bufSize = sizeof(char) * MAX_PATH_SIZE;
-	char *buf = AllocVec(bufSize, MEMF_CLEAR);
-	char *game_title = NULL;
-
 #if !defined(__morphos__)
 	if (get_wb_version() < 44)
 	{
@@ -477,6 +556,10 @@ void open_current_dir(void)
 		return;
 	}
 #endif
+
+	int bufSize = sizeof(char) * MAX_PATH_SIZE;
+	char *buf = AllocVec(bufSize, MEMF_CLEAR);
+	char *game_title = NULL;
 
 	// Get the selected item from the list
 	DoMethod(app->LV_GamesList, MUIM_NList_GetEntry, MUIV_NList_GetEntry_Active, &game_title);
@@ -508,7 +591,7 @@ void open_current_dir(void)
 	Execute(exec, 0, 0);
 	FreeVec(exec);
 #else
-	OpenWorkbenchObject(buf);
+	OpenWorkbenchObject(buf, TAG_DONE);
 #endif
 	FreeVec(buf);
 }
