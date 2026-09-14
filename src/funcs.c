@@ -161,6 +161,7 @@ static void setDefaultSettings(igame_settings *settings)
 	current_settings->screenshot_height		= 128;
 	current_settings->start_with_favorites	= FALSE;
 	current_settings->lastScanSetup			= 0;
+	current_settings->default_collection[0] = '\0';
 }
 
 static void getPrefsPath(STRPTR prefsPath, STRPTR prefsFile)
@@ -241,6 +242,8 @@ igame_settings *load_settings(const char* filename)
 					current_settings->useIgameDataTitle = atoi((const char*)file_line + 21);
 				if (!strncmp(file_line, "last_scan_setup=", 16))
 					current_settings->lastScanSetup = atoi((const char*)file_line + 16);
+				if (!strncmp(file_line, "default_collection=", 19))
+					strncpy(current_settings->default_collection, (const char*)file_line + 19, MAX_COLLECTION_NAME_SIZE);
 			}
 			while (1);
 
@@ -381,6 +384,22 @@ void app_start(void)
 	/* Initialize collections registry from prefs file */
 	initCollectionsRegistry();
 	load_collections_prefs();
+
+	/* Load default collection from igame.prefs if set */
+	if (current_settings && !isStringEmpty(current_settings->default_collection))
+	{
+		collection *default_col = getCollectionsHead();
+		while (default_col)
+		{
+			if (strcmp(default_col->name, current_settings->default_collection) == 0)
+			{
+				setActiveCollection(default_col);
+				default_col->is_default = 1;  /* Sync UI checkbox state */
+				break;
+			}
+			default_col = default_col->next;
+		}
+	}
 
 	load_repos(DEFAULT_REPOS_FILE);
 	apply_settings();
@@ -1623,6 +1642,8 @@ void settings_save(void)
 	snprintf(file_line, buffer_size, "use_igame.data_title=%d\n", current_settings->useIgameDataTitle);
 	FPuts(fpsettings, (CONST_STRPTR)file_line);
 	snprintf(file_line, buffer_size, "last_scan_setup=%d\n", current_settings->lastScanSetup);
+	FPuts(fpsettings, (CONST_STRPTR)file_line);
+	snprintf(file_line, buffer_size, "default_collection=%s\n", current_settings->default_collection);
 	FPuts(fpsettings, (CONST_STRPTR)file_line);
 
 	Close(fpsettings);

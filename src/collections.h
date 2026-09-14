@@ -40,6 +40,7 @@ void collection_switch(collection *);
 /* Collection preferences I/O */
 void load_collections_prefs(void);
 void save_collections_prefs(void);
+void save_default_collection_to_prefs(collection *);
 
 /* Collection name utilities */
 BOOL canonicalize_collection_name(const char *, char *, int);

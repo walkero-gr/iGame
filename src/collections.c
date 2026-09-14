@@ -210,13 +210,6 @@ void load_collections_prefs(void)
 
 			addCollectionToRegistry(current_col);
 		}
-		/* Metadata: default=1 */
-		else if (current_col && strncmp(line, "default=", 8) == 0)
-		{
-			current_col->is_default = (line[8] == '1') ? 1 : 0;
-			if (current_col->is_default)
-				setActiveCollection(current_col);
-		}
 		/* Repository path (any other line under a section) */
 		else if (current_col && line[0] != '\0')
 		{
@@ -250,9 +243,6 @@ void save_collections_prefs(void)
 		/* Write section header */
 		fprintf(fp, "[%s]\n", col->name);
 
-		/* Write metadata */
-		fprintf(fp, "default=%d\n", col->is_default);
-
 		/* Write repository paths */
 		repos_list *repo = col->scan_paths;
 		while (repo)
@@ -266,6 +256,20 @@ void save_collections_prefs(void)
 	}
 
 	fclose(fp);
+}
+
+/* Save selected collection name to igame.prefs */
+void save_default_collection_to_prefs(collection *col)
+{
+	if (!col)
+		return;
+
+	extern igame_settings *iGameSettings;
+	if (iGameSettings)
+	{
+		strncpy(iGameSettings->default_collection, col->name, MAX_COLLECTION_NAME_SIZE);
+		iGameSettings->default_collection[MAX_COLLECTION_NAME_SIZE] = '\0';
+	}
 }
 
 /* Switch to a different collection */

@@ -101,6 +101,7 @@ typedef struct settings
 	int start_with_favorites;
 	int useIgameDataTitle;
 	int show_url_links;
+	char default_collection[MAX_COLLECTION_NAME_SIZE + 1];
 	int lastScanSetup;  // It keeps info of the settings on the last scan
 							// that influence the item data
 							// It is a bitfield with the following structure

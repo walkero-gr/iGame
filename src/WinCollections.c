@@ -41,6 +41,7 @@
 #include "WinCollections.h"
 
 extern struct ObjApp* app;
+extern igame_settings *iGameSettings;
 
 static char last_selected_path[MAX_PATH_SIZE] = "PROGDIR:";
 
@@ -251,7 +252,18 @@ static void collections_default_handler(void)
 	if (!selected_name)
 		return;
 
-	/* Find collection and update */
+	/* If setting this collection as default, unset all others */
+	if (is_default)
+	{
+		collection *col = getCollectionsHead();
+		while (col)
+		{
+			col->is_default = 0;
+			col = col->next;
+		}
+	}
+
+	/* Find selected collection and update */
 	collection *col = getCollectionsHead();
 	while (col)
 	{
@@ -436,7 +448,32 @@ static void collection_path_remove_handler(void)
 /* Save all collections to prefs file and close window */
 static void save_collections(void)
 {
+	/* Save collections structure */
 	save_collections_prefs();
+
+	/* Save default collection name to igame.prefs */
+	collection *default_col = NULL;
+	collection *col = getCollectionsHead();
+	while (col)
+	{
+		if (col->is_default)
+		{
+			default_col = col;
+			break;
+		}
+		col = col->next;
+	}
+
+	/* Always save (even if NULL to clear prefs) */
+	if (default_col)
+		save_default_collection_to_prefs(default_col);
+	else
+		/* Clear default collection in prefs */
+		if (iGameSettings)
+			iGameSettings->default_collection[0] = '\0';
+
+	/* Save settings to persist the default collection name */
+	settings_save();
 }
 
 /* Create Collections window UI */
