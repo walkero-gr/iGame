@@ -24,10 +24,10 @@
 #include <clib/alib_protos.h>
 #include <proto/muimaster.h>
 #include <proto/asl.h>
+#include <SDI_hook.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "SDI_hook.h"
 
 #define iGame_NUMBERS
 #include "iGame_strings.h"
@@ -42,34 +42,47 @@
 
 extern struct ObjApp* app;
 
+static char last_selected_path[MAX_PATH_SIZE] = "PROGDIR:";
+
 /* PopASL StartHook - called before the file browser dialog opens */
-static LONG collections_popasl_start_hook(struct Hook *hook, APTR obj, struct TagItem *tags)
+HOOKPROTO(collections_popasl_start_hook, LONG, APTR, struct TagItem *tags)
 {
-	// Object *strObj = (Object *)hook->h_Data;
-	// char *str;
-	// get(strObj, MUIA_String_Contents, &str);
-	// printf("[DBG] collections_popasl_start_hook: str = %s\n", str);
-	// if (str && strlen(str) > 0)
-	// {
-	// 	int i = 0;
-	// 	static char drawer[MAX_PATH_SIZE];
+	while (tags->ti_Tag) tags++;  // Find end
 
-	// 	/* Extract parent directory from selected path */
-	// 	getParentPath(str, drawer, sizeof(drawer));
-	// 	printf("[DBG] collections_popasl_start_hook: drawer = %s\n", drawer);
+	tags->ti_Tag = ASLFR_InitialDrawer;
+	tags->ti_Data = (ULONG)last_selected_path;
+	tags++;
 
-	// 	/* Set initial drawer for the file browser */
-	// 	tags[i].ti_Tag = ASLFR_InitialDrawer;
-	// 	tags[i].ti_Data = (ULONG)drawer;
-	// 	i++;
+	tags->ti_Tag = TAG_END;
 
-	// 	tags[i].ti_Tag = TAG_DONE;
-	// }
-	set(app->PA_CollectionRepoPath, MUIA_String_Contents, "RAM:");
 	return TRUE;
 }
+MakeStaticHook(CollectionsPopaslStartHook, collections_popasl_start_hook);
 
-static struct Hook CollectionsPopaslStartHook = {{0}, (APTR)collections_popasl_start_hook, NULL, (APTR)NULL};
+/* PopASL StopHook - called when the file browser dialog closes */
+HOOKPROTO(collections_popasl_stop_hook, void, Object *pop, struct FileRequester *req)
+{
+	if (req && req->fr_Drawer)
+	{
+		char full_path[MAX_PATH_SIZE];
+
+		/* Build full path from drawer and file */
+		snprintf(full_path, sizeof(full_path), "%s", req->fr_Drawer);
+		// getParentPath(req->fr_Drawer, full_path, sizeof(full_path));
+
+		/* Populate the string field so collection_path_add_handler can use it */
+		set(app->STR_CollectionRepoPath, MUIA_String_Contents, full_path);
+
+		/* Store the selected path for next time the requester opens */
+		strncpy(last_selected_path, req->fr_Drawer, MAX_PATH_SIZE - 1);
+
+		// TODO: If I decide to use by default the parent path, the following can make the trick.
+		// getParentPath(req->fr_Drawer, last_selected_path, sizeof(last_selected_path));
+
+		last_selected_path[MAX_PATH_SIZE - 1] = '\0';
+	}
+}
+MakeStaticHook(CollectionsPopaslStopHook, collections_popasl_stop_hook);
 
 /* Add new collection */
 static void collections_add_handler(void)
@@ -435,7 +448,9 @@ APTR getCollectionsWindow(struct ObjApp *object)
 
 	/* Create PopaslObject */
 	object->PA_CollectionRepoPath = PopaslObject,
-		MUIA_Popasl_Type, 0,
+		MUIA_Popasl_Type, ASL_FileRequest,
+		MUIA_Popasl_StartHook, &CollectionsPopaslStartHook,
+		MUIA_Popasl_StopHook, &CollectionsPopaslStopHook,
 		MUIA_Popstring_String, object->STR_CollectionRepoPath,
 		MUIA_Popstring_Button, PopButton(MUII_PopDrawer),
 		ASLFR_TitleText, GetMBString(MSG_SelectDir),
@@ -566,9 +581,6 @@ void setCollectionsWindowMethods(struct ObjApp *object)
 	/* Initialize default checkbox as disabled (until collection selected) */
 	set(object->CH_CollectionDefault, MUIA_Disabled, TRUE);
 
-	/* Set PopASL StartHook with String object reference */
-	CollectionsPopaslStartHook.h_Data = (APTR)object->STR_CollectionRepoPath;
-
 	/* Window close request (X button) */
 	DoMethod(object->WI_Collections,
 		MUIM_Notify, MUIA_Window_CloseRequest, TRUE,
@@ -651,7 +663,4 @@ void setCollectionsWindowMethods(struct ObjApp *object)
 		object->WI_Collections, 3,
 		MUIM_Set, MUIA_Window_Open, FALSE
 	);
-
-	/* Set PopASL StartHook */
-	set(object->PA_CollectionRepoPath, MUIA_Popasl_StartHook, &CollectionsPopaslStartHook);
 }

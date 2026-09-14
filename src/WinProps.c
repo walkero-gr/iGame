@@ -97,7 +97,7 @@ APTR getPropertiesWindow(struct ObjApp *object)
 					MUIA_InnerRight, 0,
 				End,
 				Child, object->PA_PropertiesSlavePath = PopaslObject,
-					MUIA_Popasl_Type, 0,
+					MUIA_Popasl_Type, ASL_FileRequest,
 					MUIA_Popstring_String, String("", 80),
 					MUIA_Popstring_Button, PopButton(MUII_PopFile),
 					MUIA_Popasl_StopHook, &PopaslStopHook,

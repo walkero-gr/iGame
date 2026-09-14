@@ -618,7 +618,7 @@ struct ObjApp *CreateApp(void)
 
 	object->PA_RepoPath = PopaslObject,
 		MUIA_HelpNode, "PA_RepoPath",
-		MUIA_Popasl_Type, 0,
+		MUIA_Popasl_Type, ASL_FileRequest,
 		MUIA_Popstring_String, object->STR_PA_RepoPath,
 		MUIA_Popstring_Button, PopButton(MUII_PopDrawer),
 		ASLFR_TitleText, GetMBString(MSG_SelectDir),
@@ -703,7 +703,7 @@ struct ObjApp *CreateApp(void)
 
 	object->PA_AddGame = PopaslObject,
 		MUIA_HelpNode, "PA_AddGame",
-		MUIA_Popasl_Type, 0,
+		MUIA_Popasl_Type, ASL_FileRequest,
 		MUIA_Popstring_String, object->STR_PA_AddGame,
 		MUIA_Popstring_Button, object->PA_AddGame,
 		ASLFR_TitleText, GetMBString(MSG_GameExecutable),
