@@ -118,6 +118,20 @@ struct ObjApp
 	APTR GR_WI_About_Links;
 	APTR TX_About;
 	APTR BT_AboutOK;
+	// Collections Window
+	APTR WI_Collections;
+	APTR LV_Collections;
+	APTR STR_CollectionName;
+	APTR CH_CollectionDefault;
+	APTR BT_CollectionsAdd;
+	APTR BT_CollectionsRemove;
+	APTR STR_CollectionRepoPath;
+	APTR PA_CollectionRepoPath;
+	APTR LV_CollectionRepoPaths;
+	APTR BT_CollectionPathAdd;
+	APTR BT_CollectionPathRemove;
+	APTR BT_CollectionsOK;
+	APTR BT_CollectionsCancel;
 };
 
 struct ObjApp *CreateApp(void);

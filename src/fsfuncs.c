@@ -294,13 +294,9 @@ static char *csv_append_str(char *p, const char *s)
 
 void slavesListSaveToCSV(const char *filename)
 {
-	char csvFilename[32];
 	set(app->TX_Status, MUIA_Text_Contents, (const char*)GetMBString(MSG_SavingGamelist));
 
-	strlcpy(csvFilename, filename, sizeof(csvFilename));
-	strlcat(csvFilename, ".csv", sizeof(csvFilename));
-
-	FILE *fpgames = fopen(csvFilename, "w");
+	FILE *fpgames = fopen(filename, "w");
 	if (!fpgames)
 	{
 		msg_box((const char*)GetMBString(MSG_FailedOpeningGameslist));

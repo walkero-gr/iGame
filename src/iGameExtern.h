@@ -26,8 +26,10 @@
 #define Dtpic_Classname "Dtpic.mui"
 // #define MUIA_Dtpic_Name 0x80423d72
 #define PROGDIR "PROGDIR:"
-#define DEFAULT_GAMESLIST_FILE "PROGDIR:gameslist"
+#define DEFAULT_GAMESLIST_FILE "PROGDIR:gameslist.csv"
 #define DEFAULT_REPOS_FILE "PROGDIR:repos.prefs"
+#define DEFAULT_COLLECTIONS_FILE "PROGDIR:collections.prefs"
+#define DEFAULT_COLLECTION_NAME "Default"
 #define DEFAULT_GENRES_FILE "PROGDIR:genres"
 #define DEFAULT_SCREENSHOT_FILE "PROGDIR:igame.iff"
 #define DEFAULT_LOGO_FILE "PROGDIR:logo.iff"
@@ -77,6 +79,9 @@
 #define MAX_ARGUMENTS_SIZE 64
 #define MIN_TITLE_FILTER_CHARS 3
 #define MAX_CHIPSET_SIZE 16
+#define MAX_COLLECTION_NAME_SIZE 16
+#define MAX_FILENAME_PREFIX_SIZE 64
+#define PREFS_SECTION_MAX_SIZE 256
 
 #ifndef MAKE_ID
 #define MAKE_ID(a,b,c,d) ((ULONG) (a)<<24 | (ULONG) (b)<<16 | (ULONG) (c)<<8 | (ULONG) (d))
@@ -123,6 +128,18 @@ typedef struct repos
 	char repo[256];
 	struct repos* next;
 } repos_list;
+
+typedef struct collection
+{
+	char name[MAX_COLLECTION_NAME_SIZE + 1];
+	char filename_prefix[MAX_COLLECTION_NAME_SIZE + 1];
+
+	repos_list *scan_paths;
+
+	int is_default;
+
+	struct collection *next;
+} collection;
 
 typedef struct slavesList
 {
@@ -174,6 +191,8 @@ enum {
 	MENU_GAMEPROPERTIES,
 	MENU_ITEMINFO,
 	MENU_GAMEFOLDER,
+	MENU_COLLECTIONS,
+	MENU_COLLECTIONS_SETUP,
 	MENU_PREFERENCES,
 	MENU_SETTINGS,
 	MENU_REPOSITORIES,

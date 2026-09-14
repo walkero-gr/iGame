@@ -184,6 +184,8 @@ void emptySlavesList(void)
 {
 	while(slavesListRemoveHead())
 	{}
+	slavesListTail = NULL;
+	slavesListBuffer = NULL;
 }
 
 int slavesListNodeCount(int cnt)

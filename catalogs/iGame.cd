@@ -369,3 +369,49 @@ Links
 ;
 MSG_ItemExecutableOrSlave (//)
 Select the slave or the executable file
+;
+MSG_MNlabelCollections (//)
+Collections
+;
+MSG_MNCollectionsSetup (//)
+Setup...
+;
+MSG_WI_Collections (//)
+Collections
+;
+MSG_LA_Collections (//)
+Collections:
+;
+MSG_BT_CollectionsAdd (//)
++
+;
+MSG_BT_CollectionsRemove (//)
+-
+;
+MSG_LA_CollectionName (//)
+Name:
+;
+MSG_CH_CollectionDefault (//)
+Mark as default
+;
+MSG_LA_CollectionPaths (//)
+Paths
+;
+MSG_BT_CollectionsSAVE (//)
+Save
+;
+MSG_BT_CollectionsCancel (//)
+Cancel
+;
+MSG_DefaultCollectionName (//)
+New Collection
+;
+MSG_BT_CollectionPathAdd (//)
+Add
+;
+MSG_BT_CollectionPathRemove (//)
+Remove
+;
+MSG_ERR_CollectionPathExists (//)
+This path already exists in the collection.
+;

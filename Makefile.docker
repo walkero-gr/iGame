@@ -114,7 +114,8 @@ igame_OBJS	= src/funcs_$(CPU).o src/iGameGUI_$(CPU).o \
 	src/iGameMain_$(CPU).o src/strfuncs_$(CPU).o src/fsfuncs_$(CPU).o \
 	src/slavesList_$(CPU).o src/genresList_$(CPU).o \
 	src/chipsetList_$(CPU).o src/WinInfo_$(CPU).o src/WinProps_$(CPU).o \
-	src/WinAbout_$(CPU).o
+	src/WinAbout_$(CPU).o src/collections_$(CPU).o src/migrate_$(CPU).o \
+	src/WinCollections_$(CPU).o
 
 ##########################################################################
 # Rule for building
@@ -173,6 +174,14 @@ src/WinProps_$(CPU).o: src/WinProps.c src/WinProps.h src/iGameExtern.h \
 
 src/WinAbout_$(CPU).o: src/WinAbout.c src/WinAbout.h src/iGameExtern.h \
 	src/iGameGUI.h src/iGame_strings.h src/strfuncs.h
+
+src/WinCollections_$(CPU).o: src/WinCollections.c src/WinCollections.h \
+	src/iGameExtern.h src/iGameGUI.h src/iGame_strings.h src/collections.h
+
+src/collections_$(CPU).o: src/collections.c src/collections.h
+
+src/migrate_$(CPU).o: src/migrate.c src/migrate.h src/iGameExtern.h \
+	src/collections.h src/fsfuncs.h
 
 ##########################################################################
 # generic rules

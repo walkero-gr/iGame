@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://URL/\n"
-"POT-Creation-Date: 2025-05-29 18:06+0000\n"
+"POT-Creation-Date: 2026-09-14 20:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -506,4 +506,68 @@ msgstr ""
 
 msgctxt "MSG_GR_LinksTitle (//)"
 msgid "Links"
+msgstr ""
+
+msgctxt "MSG_ItemExecutableOrSlave (//)"
+msgid "Select the slave or the executable file"
+msgstr ""
+
+msgctxt "MSG_MNlabelCollections (//)"
+msgid "Collections"
+msgstr ""
+
+msgctxt "MSG_MNCollectionsSetup (//)"
+msgid "Setup..."
+msgstr ""
+
+msgctxt "MSG_WI_Collections (//)"
+msgid "Collections"
+msgstr ""
+
+msgctxt "MSG_LA_Collections (//)"
+msgid "Collections:"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionsAdd (//)"
+msgid "+"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionsRemove (//)"
+msgid "-"
+msgstr ""
+
+msgctxt "MSG_LA_CollectionName (//)"
+msgid "Name:"
+msgstr ""
+
+msgctxt "MSG_CH_CollectionDefault (//)"
+msgid "Mark as default"
+msgstr ""
+
+msgctxt "MSG_LA_CollectionPaths (//)"
+msgid "Paths"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionsSAVE (//)"
+msgid "Save"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionsCancel (//)"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "MSG_DefaultCollectionName (//)"
+msgid "New Collection"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionPathAdd (//)"
+msgid "Add"
+msgstr ""
+
+msgctxt "MSG_BT_CollectionPathRemove (//)"
+msgid "Remove"
+msgstr ""
+
+msgctxt "MSG_ERR_CollectionPathExists (//)"
+msgid "This path already exists in the collection."
 msgstr ""

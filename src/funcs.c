@@ -60,6 +60,7 @@
 #include "genresList.h"
 #include "chipsetList.h"
 #include "funcs.h"
+#include "collections.h"
 
 #ifdef BENCH
 #define BENCH_DECLARE     struct DateStamp _bench_s, _bench_e
@@ -308,7 +309,7 @@ static void load_repos(const char* filename)
 		free(file_line);
 }
 
-static void populateGenresLists(void)
+void populateGenresLists(void)
 {
 	if (!current_settings->hide_side_panel)
 	{
@@ -377,10 +378,9 @@ static void clear_gameslist(void)
 
 void app_start(void)
 {
-	// check if the gamelist csv file exists. If not, try to load the old one
-	char csvFilename[32];
-	strcpy(csvFilename, (CONST_STRPTR)DEFAULT_GAMESLIST_FILE);
-	strcat(csvFilename, ".csv");
+	/* Initialize collections registry from prefs file */
+	initCollectionsRegistry();
+	load_collections_prefs();
 
 	load_repos(DEFAULT_REPOS_FILE);
 	apply_settings();
@@ -404,7 +404,7 @@ void app_start(void)
 	{
 		BENCH_DECLARE;
 		BENCH_START();
-		slavesListLoadFromCSV(csvFilename);
+		slavesListLoadFromCSV((CONST_STRPTR)DEFAULT_GAMESLIST_FILE);
 		BENCH_END("CSV load");
 	}
 

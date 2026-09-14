@@ -46,7 +46,9 @@
 #include "iGameExtern.h"
 #include "fsfuncs.h"
 #include "funcs.h"
+#include "collections.h"
 #include "iGameGUI.h"
+#include "migrate.h"
 
 /* Increase stack size */
 #if defined(__amigaos4__)
@@ -131,6 +133,9 @@ int main(int argc, char **argv)
 		return RETURN_ERROR;
 	}
 
+	/* Migrate v2 to v3 collections before GUI creation */
+	migrate_v2_to_v3();
+
 	app = CreateApp();
 	if (app)
 	{
@@ -192,6 +197,19 @@ int main(int argc, char **argv)
 
 			case MENU_REPOSITORIES:
 				set(app->WI_GameRepositories, MUIA_Window_Open, TRUE);
+				break;
+
+			case MENU_COLLECTIONS_SETUP:
+				/* Populate listview with all collections from registry */
+				DoMethod(app->LV_Collections, MUIM_List_Clear);
+				collection *col = getCollectionsHead();
+				while (col)
+				{
+					DoMethod(app->LV_Collections, MUIM_List_InsertSingle, col->name, MUIV_List_Insert_Bottom);
+					col = col->next;
+				}
+				/* Open window */
+				set(app->WI_Collections, MUIA_Window_Open, TRUE);
 				break;
 
 			case MENU_MUISETTINGS:

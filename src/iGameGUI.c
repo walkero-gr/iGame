@@ -69,6 +69,7 @@
 #include "iGameGUI.h"
 #include "WinInfo.h"
 #include "WinProps.h"
+#include "WinCollections.h"
 #include "WinAbout.h"
 
 extern igame_settings *current_settings;
@@ -105,6 +106,9 @@ static struct NewMenu MenuMainWin[] =
 	{ NM_ITEM ,  STR_ID(MSG_MNMainProperties)						,"P",0 ,0			,(APTR)MENU_GAMEPROPERTIES },
 	{ NM_ITEM ,  STR_ID(MSG_MNMainIformation)						,"I",0 ,0			,(APTR)MENU_ITEMINFO },
 	{ NM_ITEM ,  STR_ID(MSG_MNMainOpenCurrentDir)					,"D",0 ,0			,(APTR)MENU_GAMEFOLDER },
+
+	{ NM_TITLE, STR_ID(MSG_MNlabelCollections)						, 0 ,0 ,0			,(APTR)MENU_COLLECTIONS },
+	{ NM_ITEM ,  STR_ID(MSG_MNCollectionsSetup)						, 0 ,0 ,0			,(APTR)MENU_COLLECTIONS_SETUP },
 
 	{ NM_TITLE, STR_ID(MSG_MNMainPreferences)						, 0 ,0 ,0			,(APTR)MENU_PREFERENCES },
 	{ NM_ITEM ,  STR_ID(MSG_MNMainiGameSettings)					, 0 ,0 ,0			,(APTR)MENU_SETTINGS },
@@ -1010,6 +1014,7 @@ struct ObjApp *CreateApp(void)
 		SubWindow, object->WI_MainWindow,
 		SubWindow, object->WI_Properties = getPropertiesWindow(object),
 		SubWindow, object->WI_GameRepositories,
+		SubWindow, object->WI_Collections = getCollectionsWindow(object),
 		SubWindow, object->WI_AddNonWHDLoad,
 		SubWindow, object->WI_About = getAboutWindow(object),
 		SubWindow, object->WI_Settings,
@@ -1024,6 +1029,7 @@ struct ObjApp *CreateApp(void)
 
 	setInformationWindowMethods(object);
 	setPropertiesWindowMethods(object);
+	setCollectionsWindowMethods(object);
 	setAboutWindowMethods(object);
 
 	DoMethod(object->LV_GamesList, MUIM_Notify, MUIA_NList_TitleClick, MUIV_EveryTime,
